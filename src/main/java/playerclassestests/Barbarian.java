@@ -1,4 +1,4 @@
-package playerclasses;
+package playerclassestests;
 
 public class Barbarian extends PlayerType {
 

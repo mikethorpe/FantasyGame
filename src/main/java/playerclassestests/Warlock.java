@@ -1,7 +1,6 @@
-package playerclasses;
+package playerclassestests;
 
 import creatures.Pet;
-import player.Player;
 
 public class Warlock extends PlayerType {
 
