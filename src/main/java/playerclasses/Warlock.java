@@ -3,19 +3,12 @@ package playerclasses;
 import creatures.Pet;
 import player.Player;
 
-public class Warlock extends Player {
+public class Warlock extends PlayerType {
 
 	private Pet pet;
 
-	public Warlock(String name) {
-		super(name);
+	public Warlock() {
 	}
 
-	public Pet getPet() {
-		return pet;
-	}
 
-	public void addPet(Pet pet){
-		this.pet = pet;
-	}
 }

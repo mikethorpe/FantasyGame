@@ -11,17 +11,7 @@ public class WarlockTest {
 	Warlock warlock;
 	@Before
 	public void before(){
-		warlock = new Warlock("Jim");
-	}
-
-	@Test
-	public void canGetName(){
-		assertEquals("Jim", warlock.getName());
-	}
-
-	@Test
-	public void canGetHealthPoints(){
-		assertEquals(100, warlock.getHealthPoints());
+		warlock = new Warlock();
 	}
 
 	@Test

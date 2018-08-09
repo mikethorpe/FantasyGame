@@ -3,19 +3,9 @@ package playerclasses;
 import itemsTests.Potion;
 import player.Player;
 
-public class Cleric extends Player {
+public class Cleric extends PlayerType {
 
-	private Potion potion;
-
-	public Cleric(String name) {
-		super(name);
+	public Cleric() {
 	}
 
-	public Potion getPotion() {
-		return potion;
-	}
-
-	public void addPotion(Potion potion){
-		this.potion = potion;
-	}
 }

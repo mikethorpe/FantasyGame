@@ -15,19 +15,9 @@ public class BarbarianTest {
 
 	@Before
 	public void before(){
-		barbarian = new Barbarian("Jim");
+		barbarian = new Barbarian();
 		goblin = new Goblin();
 		weapon = new Weapon();
-	}
-
-	@Test
-	public void canGetName(){
-		assertEquals("Jim", barbarian.getName());
-	}
-
-	@Test
-	public void canGetHealthPoints(){
-		assertEquals(100, barbarian.getHealthPoints());
 	}
 
 	@Test

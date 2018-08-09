@@ -11,17 +11,7 @@ public class ClericTest {
 	Cleric cleric;
 	@Before
 	public void before(){
-		cleric = new Cleric("Jim");
-	}
-
-	@Test
-	public void canGetName(){
-		assertEquals("Jim", cleric.getName());
-	}
-
-	@Test
-	public void canGetHealthPoints(){
-		assertEquals(100, cleric.getHealthPoints());
+		cleric = new Cleric();
 	}
 
 	@Test
