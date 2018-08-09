@@ -1,6 +1,8 @@
 package playerclassestests;
 
-public class Cleric extends PlayerType {
+import interfaces.IPlayerType;
+
+public class Cleric implements IPlayerType {
 
 	public Cleric() {
 	}

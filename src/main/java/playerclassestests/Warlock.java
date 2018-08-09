@@ -1,8 +1,9 @@
 package playerclassestests;
 
 import creatures.Pet;
+import interfaces.IPlayerType;
 
-public class Warlock extends PlayerType {
+public class Warlock implements IPlayerType {
 
 	private Pet pet;
 

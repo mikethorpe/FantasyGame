@@ -1,6 +1,8 @@
 package playerclassestests;
 
-public class Barbarian extends PlayerType {
+import interfaces.IPlayerType;
+
+public class Barbarian implements IPlayerType {
 
 	private String title;
 

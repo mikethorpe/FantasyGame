@@ -2,20 +2,20 @@ package player;
 
 import creatures.Pet;
 import enemy.Enemy;
+import interfaces.IPlayerType;
 import itemsTests.Potion;
 import itemsTests.Weapon;
-import playerclassestests.PlayerType;
 
 public class Player {
 
 	private int healthPoints;
 	private String name;
-	private PlayerType playerType;
+	private IPlayerType playerType;
 	private Weapon weapon;
 	private Potion potion;
 	private Pet pet;
 
-	public Player(String name, PlayerType playerType) {
+	public Player(String name, IPlayerType playerType) {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerType = playerType;
@@ -30,7 +30,7 @@ public class Player {
 		return name;
 	}
 
-	public PlayerType getPlayerType(){
+	public IPlayerType getPlayerType(){
 		return playerType;
 	}
 
