@@ -12,6 +12,7 @@ public class Player {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerType = playerType;
+		//addTitle();
 	}
 
 	public int getHealthPoints() {
@@ -25,4 +26,8 @@ public class Player {
 	public PlayerType getPlayerType(){
 		return playerType;
 	}
+
+//	private void addTitle(){
+//		String title = playerType.
+//	}
 }

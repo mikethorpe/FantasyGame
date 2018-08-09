@@ -21,6 +21,11 @@ public class BarbarianTest {
 	}
 
 	@Test
+	public void canGetTitle(){
+		assertEquals("Barbarian", barbarian.getTitle());
+	}
+
+	@Test
 	public void canAddWeapon(){
 		barbarian.addWeapon(weapon);
 		assertEquals(weapon, barbarian.getWeapon());

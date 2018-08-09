@@ -1,13 +1,15 @@
 package playerclasses;
-import enemy.Enemy;
-import itemsTests.Weapon;
-import player.Player;
 
 public class Barbarian extends PlayerType {
 
-	private Weapon weapon;
+	private String title;
 
 	public Barbarian(){
+		title = "Barbarian";
+	}
+
+	public String getTitle(){
+		return this.title;
 	}
 
 }

@@ -20,7 +20,7 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void canGetName(){
+	public void canGetNameAndTitle(){
 		assertEquals("Vicky", player.getName());
 	}
 
