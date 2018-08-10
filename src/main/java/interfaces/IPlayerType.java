@@ -1,7 +1,11 @@
 package interfaces;
 
+import items.Weapon;
+
 public interface IPlayerType {
 
-    public String getTitle();
+    String getTitle();
+
+    Weapon getWeapon();
 
 }

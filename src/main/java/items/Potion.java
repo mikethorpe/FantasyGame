@@ -1,4 +1,4 @@
-package itemsTests;
+package items;
 
 public class Potion {
 

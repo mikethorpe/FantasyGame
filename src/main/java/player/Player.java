@@ -3,15 +3,15 @@ package player;
 import creatures.Pet;
 import enemy.Enemy;
 import interfaces.IPlayerType;
-import itemsTests.Potion;
-import itemsTests.Weapon;
+import items.Potion;
+import items.Weapon;
 
 public class Player {
 
-	private int healthPoints;
-	private String name;
-	private String nameWithTitle;
 	private IPlayerType playerType;
+	private String name;
+	private int healthPoints;
+	private String nameWithTitle;
 	private Weapon weapon;
 	private Potion potion;
 	private Pet pet;
@@ -20,6 +20,7 @@ public class Player {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerType = playerType;
+		this.weapon = playerType.getWeapon();
 		addTitle();
 	}
 
@@ -42,10 +43,6 @@ public class Player {
 
 	public String getNameWithTitle(){
 		return this.nameWithTitle;
-	}
-
-	public void addWeapon(Weapon weapon){
-		this.weapon = weapon;
 	}
 
 	public Weapon getWeapon(){

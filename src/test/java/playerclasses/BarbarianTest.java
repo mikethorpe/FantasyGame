@@ -1,7 +1,7 @@
-package playerclassestests;
+package playerclasses;
 
 import enemyclasses.Goblin;
-import itemsTests.Weapon;
+import items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 

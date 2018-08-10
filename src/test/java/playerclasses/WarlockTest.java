@@ -1,4 +1,4 @@
-package playerclassestests;
+package playerclasses;
 
 import org.junit.Before;
 

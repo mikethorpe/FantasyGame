@@ -2,12 +2,11 @@ package playertests;
 
 import creatures.Pet;
 import enemyclasses.Goblin;
-import itemsTests.Potion;
-import itemsTests.Weapon;
+import items.Potion;
 import org.junit.Before;
 import org.junit.Test;
 import player.Player;
-import playerclassestests.Barbarian;
+import playerclasses.Barbarian;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -17,14 +16,12 @@ public class PlayerTest {
 	Player player;
 	Barbarian barbarian;
 	Goblin goblin;
-	Weapon weapon;
 
 	@Before
 	public void before() {
 		barbarian = new Barbarian();
 		player = new Player("Vicky", barbarian);
 		goblin = new Goblin();
-		weapon = new Weapon();
 	}
 
 	@Test
@@ -57,24 +54,20 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void canAddWeapon(){
-		player.addWeapon(weapon);
-		assertEquals(weapon, player.getWeapon());
+	public void hasWeapon(){
+		assertEquals(barbarian.getWeapon(), player.getWeapon());
 	}
 
 	@Test
 	public void canAttackEnemy(){
-		player.addWeapon(weapon);
 		player.attackEnemy(goblin);
 		assertEquals(95, goblin.getHealthPoints());
 	}
 
 	@Test
 	public void canReturnEnemyDamageTaken(){
-		player.addWeapon(weapon);
 		assertEquals("Ouch, that hurt by exactly 5 points!", player.attackEnemy(goblin));
 	}
-
 
 	@Test
 	public void canAddTitle(){
