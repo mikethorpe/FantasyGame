@@ -7,9 +7,10 @@ public class Barbarian implements IPlayerType {
 	private String title;
 
 	public Barbarian(){
-		title = "Barbarian";
+		this.title = "Barbarian";
 	}
 
+	@Override
 	public String getTitle(){
 		return this.title;
 	}

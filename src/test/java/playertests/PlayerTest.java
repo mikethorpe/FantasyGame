@@ -75,4 +75,9 @@ public class PlayerTest {
 		assertEquals("Ouch, that hurt by exactly 5 points!", player.attackEnemy(goblin));
 	}
 
+
+	@Test
+	public void canAddTitle(){
+		assertEquals("Vicky the Barbarian", player.getNameWithTitle());
+	}
 }

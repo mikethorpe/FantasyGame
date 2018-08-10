@@ -10,6 +10,7 @@ public class Player {
 
 	private int healthPoints;
 	private String name;
+	private String nameWithTitle;
 	private IPlayerType playerType;
 	private Weapon weapon;
 	private Potion potion;
@@ -19,7 +20,7 @@ public class Player {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerType = playerType;
-		//addTitle();
+		addTitle();
 	}
 
 	public int getHealthPoints() {
@@ -34,9 +35,14 @@ public class Player {
 		return playerType;
 	}
 
-//	private void addTitle(){
-//		String title = playerType.
-//	}
+	public void addTitle(){
+		String title = playerType.getTitle();
+		nameWithTitle = this.name + " the " + title;
+	}
+
+	public String getNameWithTitle(){
+		return this.nameWithTitle;
+	}
 
 	public void addWeapon(Weapon weapon){
 		this.weapon = weapon;
