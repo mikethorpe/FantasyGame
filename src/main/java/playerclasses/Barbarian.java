@@ -1,11 +1,9 @@
 package playerclasses;
 
-import enemy.Enemy;
-import interfaces.IMeleeAttack;
 import interfaces.IPlayerType;
 import items.Weapon;
 
-public class Barbarian implements IPlayerType, IMeleeAttack {
+public class Barbarian implements IPlayerType {
 
 	private String title;
 	private Weapon weapon;
@@ -23,10 +21,5 @@ public class Barbarian implements IPlayerType, IMeleeAttack {
 	@Override
 	public Weapon getWeapon(){
 		return this.weapon;
-	}
-
-	@Override
-	public String attack(Enemy enemy){
-		return "Hi";
 	}
 }
