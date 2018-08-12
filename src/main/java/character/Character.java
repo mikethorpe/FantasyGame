@@ -94,4 +94,9 @@ public class Character {
 	public ArrayList<IItem> getAllItems(){
 		return  inventory.getAllItems();
 	}
+
+	public boolean dropInventoryItem(IItem item){
+		return inventory.removeItem(item);
+	}
+
 }
