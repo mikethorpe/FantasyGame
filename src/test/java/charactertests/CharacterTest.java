@@ -176,6 +176,7 @@ public class CharacterTest {
 	// same as above with less logic
 	@Test
 	public void cantPickUpItemIfInventoryIsFull(){
+		// add 9 potions to the inventory
 		character.pickUpItem(new Potion());
 		character.pickUpItem(new Potion());
 		character.pickUpItem(new Potion());
@@ -185,8 +186,14 @@ public class CharacterTest {
 		character.pickUpItem(new Potion());
 		character.pickUpItem(new Potion());
 		character.pickUpItem(new Potion());
-		character.pickUpItem(new Potion());
+
+		// add a tenth potion and check it that it returns pickedup = true
+		// check that there are now 10 items in the inventory
+		assertEquals(true, character.pickUpItem(new Potion()));
 		assertEquals(10, character.getNumberOfInventoryItems());
+
+		// add an eleventh potion and check that it returns pickedup = false
+		// check that there are still only 10 items in the inventory
 		assertEquals(false, character.pickUpItem(new Potion()));
 		assertEquals(10, character.getNumberOfInventoryItems());
 	}
