@@ -2,10 +2,14 @@ package character;
 
 import creatures.Pet;
 import enemy.Enemy;
+import interfaces.IItem;
 import interfaces.IPlayerClass;
 import interfaces.IPlayerRace;
 import interfaces.IWeapon;
 import itemstests.Potion;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class Character {
 
@@ -18,14 +22,18 @@ public class Character {
 	private Potion potion;
 	private Pet pet;
 	private Inventory inventory;
+	private LevelType level;
+	private int experiencePoints;
 
-	public Character(String name, IPlayerRace playerRace, IPlayerClass playerType) {
+	public Character(String name, IPlayerRace playerRace, IPlayerClass playerClass) {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerRace = playerRace;
-		this.playerClass = playerType;
-		this.weapon = playerType.getWeapon();
+		this.playerClass = playerClass;
+		this.weapon = playerClass.getWeapon();
 		this.inventory = new Inventory();
+		this.level = LevelType.LEVEL_01;
+		this.experiencePoints = 0;
 		addTitles();
 	}
 
@@ -43,6 +51,14 @@ public class Character {
 
 	public IPlayerRace getPlayerRace(){
 		return playerRace;
+	}
+
+	public LevelType getLevel() {
+		return level;
+	}
+
+	public int getExperiencePoints(){
+		return experiencePoints;
 	}
 
 	public void addTitles(){
@@ -75,8 +91,38 @@ public class Character {
 		this.pet = pet;
 	}
 
+	public void updateLevel(){
+		for (LevelType level : LevelType.values()){
+			if (level.getExperienceRequired() <= this.experiencePoints){
+				this.level = level;
+			}
+		}
+	}
+
 	public String attackEnemy(Enemy enemy){
 		int attackPoints = weapon.getAttackPoints();
-		return enemy.takeDamage(attackPoints);
+		String response = enemy.takeDamage(attackPoints);
+		if (enemy.isDead() == true){
+			this.experiencePoints += enemy.getExperiencePointsToAward();
+			updateLevel();
+		}
+		return response;
 	}
+
+	public boolean pickUpItem(IItem item){
+		return inventory.addItem(item);
+	}
+
+	public int getNumberOfInventoryItems(){
+		return this.inventory.getNumberOfItems();
+	}
+
+	public ArrayList<IItem> getAllItems(){
+		return  inventory.getAllItems();
+	}
+
+	public boolean dropInventoryItem(IItem item){
+		return inventory.removeItem(item);
+	}
+
 }

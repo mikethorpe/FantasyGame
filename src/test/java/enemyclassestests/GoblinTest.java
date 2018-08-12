@@ -20,13 +20,18 @@ public class GoblinTest {
 	}
 
 	@Test
-	public void canTakeDamaage(){
+	public void canGetExperiencePointsToAward(){
+		assertEquals(25, goblin.getExperiencePointsToAward());
+	}
+
+	@Test
+	public void canTakeDamage(){
 		goblin.takeDamage(50);
 		assertEquals(50, goblin.getHealthPoints());
 	}
 
 	@Test
 	public void canReturnDamageTaken(){
-		assertEquals("Ouch, that hurt by exactly 10 points!", goblin.takeDamage(10));
+		assertEquals("You hit the enemy and reduced its health by 10 points!", goblin.takeDamage(10));
 	}
 }
