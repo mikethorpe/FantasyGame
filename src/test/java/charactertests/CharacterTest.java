@@ -173,6 +173,24 @@ public class CharacterTest {
 		assertFalse(pickedUp);
 	}
 
+	// same as above with less logic
+	@Test
+	public void cantPickUpItemIfInventoryIsFull(){
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		character.pickUpItem(new Potion());
+		assertEquals(10, character.getNumberOfInventoryItems());
+		assertEquals(false, character.pickUpItem(new Potion()));
+		assertEquals(10, character.getNumberOfInventoryItems());
+	}
+
 	@Test
 	public void canGetAllInventoryItems(){
 		character.pickUpItem(potion);
