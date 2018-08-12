@@ -6,9 +6,16 @@ import java.util.ArrayList;
 public class Inventory {
 
 	private ArrayList<IItem> inventoryItems;
+	private int inventorySize;
 
 	public Inventory() {
 		this.inventoryItems = new ArrayList<>();
+		this.inventorySize = 10;
+	}
+
+	public Inventory(int inventorySize) {
+		this.inventoryItems = new ArrayList<>();
+		this.inventorySize = inventorySize;
 	}
 
 	public int getNumberOfItems(){
@@ -16,7 +23,7 @@ public class Inventory {
 	}
 
 	public boolean addItem(IItem item){
-		if (inventoryItems.size() < 10) {
+		if (inventoryItems.size() < inventorySize) {
 			return inventoryItems.add(item);
 		}
 		return false;
@@ -28,5 +35,9 @@ public class Inventory {
 
 	public boolean removeItem(IItem item){
 		return inventoryItems.remove(item);
+	}
+
+	public int getInventorySize(){
+		return this.inventorySize;
 	}
 }
