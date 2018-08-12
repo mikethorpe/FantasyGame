@@ -119,31 +119,31 @@ public class CharacterTest {
 		character.attackEnemy(goblin);
 		character.attackEnemy(goblin);
 		character.attackEnemy(goblin);
-		assertEquals(true, goblin.isDead());
+		assertTrue (goblin.isDead());
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
-		assertEquals(true, goblin2.isDead());
+		assertTrue (goblin.isDead());
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
-		assertEquals(true, goblin3.isDead());
+		assertTrue (goblin.isDead());
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
-		assertEquals(true, goblin4.isDead());
+		assertTrue (goblin.isDead());
 		character.attackEnemy(goblin5);
 		character.attackEnemy(goblin5);
 		character.attackEnemy(goblin5);
 		character.attackEnemy(goblin5);
 		character.attackEnemy(goblin5);
-		assertEquals(true, goblin5.isDead());
+		assertTrue (goblin.isDead());
 		assertEquals(LevelType.LEVEL_02, character.getLevel());
 	}
 
