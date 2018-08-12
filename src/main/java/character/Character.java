@@ -24,12 +24,12 @@ public class Character {
 	private LevelType level;
 	private int experiencePoints;
 
-	public Character(String name, IPlayerRace playerRace, IPlayerClass playerType) {
+	public Character(String name, IPlayerRace playerRace, IPlayerClass playerClass) {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerRace = playerRace;
-		this.playerClass = playerType;
-		this.weapon = playerType.getWeapon();
+		this.playerClass = playerClass;
+		this.weapon = playerClass.getWeapon();
 		this.inventory = new Inventory();
 		this.level = LevelType.LEVEL_01;
 		this.experiencePoints = 0;
@@ -54,6 +54,10 @@ public class Character {
 
 	public LevelType getLevel() {
 		return level;
+	}
+
+	public int getExperiencePoints(){
+		return experiencePoints;
 	}
 
 	public void addTitles(){
@@ -88,7 +92,11 @@ public class Character {
 
 	public String attackEnemy(Enemy enemy){
 		int attackPoints = weapon.getAttackPoints();
-		return enemy.takeDamage(attackPoints);
+		String response = enemy.takeDamage(attackPoints);
+		if (enemy.isDead() == true){
+			this.experiencePoints += enemy.getExperiencePointsToAward();
+		}
+		return response;
 	}
 
 	public boolean pickUpItem(IItem item){

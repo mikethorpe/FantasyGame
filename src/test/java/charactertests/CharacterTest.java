@@ -82,12 +82,25 @@ public class CharacterTest {
 	@Test
 	public void canAttackEnemy(){
 		character.attackEnemy(goblin);
-		assertEquals(95, goblin.getHealthPoints());
+		assertEquals(80, goblin.getHealthPoints());
 	}
 
 	@Test
 	public void canReturnEnemyDamageTaken(){
-		assertEquals("Ouch, that hurt by exactly 5 points!", character.attackEnemy(goblin));
+		assertEquals("You hit the enemy and reduced its health by 20 points!", character.attackEnemy(goblin));
+	}
+
+	@Test
+	public void canKillTheEnemyAndGainPoints(){
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		assertEquals(20, goblin.getHealthPoints());
+		assertEquals("You killed the enemy!", character.attackEnemy(goblin));
+		assertEquals(0, goblin.getHealthPoints());
+		assertEquals(true, goblin.isDead());
+		assertEquals(25, character.getExperiencePoints());
 	}
 
 	@Test

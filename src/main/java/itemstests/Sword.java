@@ -9,7 +9,7 @@ public class Sword implements IWeapon, IItem {
 	private int attackPoints;
 
 	public Sword() {
-		this.attackPoints = 5;
+		this.attackPoints = 20;
 		this.name = "Sword";
 	}
 
