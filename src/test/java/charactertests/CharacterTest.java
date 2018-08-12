@@ -5,6 +5,7 @@ import creatures.Pet;
 import enemyclasses.Goblin;
 import interfaces.IItem;
 import itemstests.Potion;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
@@ -14,6 +15,8 @@ import playerraces.Human;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 public class CharacterTest {
 
@@ -94,8 +97,23 @@ public class CharacterTest {
 
 	@Test
 	public void canPickUpItemAndAddToInventory(){
-		character.pickUpItem(potion);
+		boolean pickedUp = character.pickUpItem(potion);
 		assertEquals(1, character.getNumberOfInventoryItems());
+		assertTrue(pickedUp);
+	}
+
+	@Test
+	public void cannotPickUpItem(){
+		boolean pickedUp = true;
+
+		// Try to pick up 11 items to add to default inventory of size 10
+		for (int i = 0; i < 11; i++){
+			pickedUp = character.pickUpItem(new Potion());
+		}
+
+		// Check we only have 10
+		Assert.assertEquals(10, character.getNumberOfInventoryItems());
+		assertFalse(pickedUp);
 	}
 
 	@Test
@@ -104,4 +122,20 @@ public class CharacterTest {
 		ArrayList<IItem> items = character.getAllItems();
 		assertEquals(1, items.size());
 	}
+
+	@Test
+	public void canDropInventoryItem(){
+		character.pickUpItem(potion);
+		boolean dropped = character.dropInventoryItem(potion);
+		ArrayList<IItem> items = character.getAllItems();
+		assertFalse(items.contains(potion));
+		assertTrue(dropped);
+	}
+
+	@Test
+	public void cannotDropItem(){
+		boolean dropped = character.dropInventoryItem(potion);
+		assertFalse(dropped);
+	}
+
 }
