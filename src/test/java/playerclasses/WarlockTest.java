@@ -1,6 +1,5 @@
 package playerclasses;
 
-import interfaces.IWeapon;
 import items.Staff;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +18,7 @@ public class WarlockTest {
 
 	@Test
 	public void canGetTitle(){
-		assertEquals("Warlock", warlock.getTitle());
+		assertEquals("Warlock", warlock.getClassTitle());
 	}
 
 	@Test

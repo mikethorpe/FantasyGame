@@ -1,8 +1,9 @@
 package items;
 
+import interfaces.IItem;
 import interfaces.IWeapon;
 
-public class Sword implements IWeapon {
+public class Sword implements IWeapon, IItem {
 
 	private int attackPoints;
 

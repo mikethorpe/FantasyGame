@@ -2,26 +2,31 @@ package player;
 
 import creatures.Pet;
 import enemy.Enemy;
-import interfaces.IPlayerType;
+import interfaces.IPlayerClass;
+import interfaces.IPlayerRace;
 import interfaces.IWeapon;
 import items.Potion;
 
 public class Player {
 
-	private IPlayerType playerType;
+	private IPlayerClass playerClass;
+	private IPlayerRace playerRace;
 	private String name;
 	private int healthPoints;
-	private String nameWithTitle;
+	private String nameWithTitles;
 	private IWeapon weapon;
 	private Potion potion;
 	private Pet pet;
+	private Inventory inventory;
 
-	public Player(String name, IPlayerType playerType) {
+	public Player(String name, IPlayerRace playerRace, IPlayerClass playerType) {
 		this.name = name;
 		this.healthPoints = 100;
-		this.playerType = playerType;
+		this.playerRace = playerRace;
+		this.playerClass = playerType;
 		this.weapon = playerType.getWeapon();
-		addTitle();
+		this.inventory = new Inventory();
+		addTitles();
 	}
 
 	public int getHealthPoints() {
@@ -32,17 +37,22 @@ public class Player {
 		return name;
 	}
 
-	public IPlayerType getPlayerType(){
-		return playerType;
+	public IPlayerClass getPlayerClass(){
+		return playerClass;
 	}
 
-	public void addTitle(){
-		String title = playerType.getTitle();
-		nameWithTitle = this.name + " the " + title;
+	public IPlayerRace getPlayerRace(){
+		return playerRace;
 	}
 
-	public String getNameWithTitle(){
-		return this.nameWithTitle;
+	public void addTitles(){
+		String classTitle = playerClass.getClassTitle();
+		String raceTitle = playerRace.getRaceTitle();
+		nameWithTitles = this.name + " the " + raceTitle + " " + classTitle;
+	}
+
+	public String getNameWithTitles(){
+		return this.nameWithTitles;
 	}
 
 	public IWeapon getWeapon(){

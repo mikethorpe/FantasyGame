@@ -1,6 +1,8 @@
 package items;
 
-public class Potion {
+import interfaces.IItem;
+
+public class Potion implements IItem {
 
 	public Potion() {
 	}
