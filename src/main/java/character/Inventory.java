@@ -1,4 +1,4 @@
-package player;
+package character;
 
 import interfaces.IItem;
 import java.util.ArrayList;

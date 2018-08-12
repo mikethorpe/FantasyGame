@@ -1,20 +1,19 @@
-package playertests;
+package charactertests;
 
 import creatures.Pet;
 import enemyclasses.Goblin;
 import itemstests.Potion;
 import org.junit.Before;
 import org.junit.Test;
-import player.Player;
+import character.Character;
 import playerclassestests.Barbarian;
 import playerraces.Human;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class PlayerTest {
+public class CharacterTest {
 
-
-	Player player;
+	Character character;
 	Human human;
 	Barbarian barbarian;
 	Goblin goblin;
@@ -23,62 +22,62 @@ public class PlayerTest {
 	public void before() {
 		human = new Human();
 		barbarian = new Barbarian();
-		player = new Player("Vicky", human, barbarian);
+		character = new Character("Vicky", human, barbarian);
 		goblin = new Goblin();
 	}
 
 	@Test
 	public void canGetName() {
-		assertEquals("Vicky", player.getName());
+		assertEquals("Vicky", character.getName());
 	}
 
 	@Test
 	public void canGetHealthPoints() {
-		assertEquals(100, player.getHealthPoints());
+		assertEquals(100, character.getHealthPoints());
 	}
 
 	@Test
 	public void canGetPlayerClass() {
-		assertEquals(barbarian, player.getPlayerClass());
+		assertEquals(barbarian, character.getPlayerClass());
 	}
 
 	@Test
 	public void canGetPlayerRace() {
-		assertEquals(human, player.getPlayerRace());
+		assertEquals(human, character.getPlayerRace());
 	}
 
 	@Test
 	public void canAddPotion() {
 		Potion potion = new Potion();
-		player.addPotion(potion);
-		assertEquals(potion, player.getPotion());
+		character.addPotion(potion);
+		assertEquals(potion, character.getPotion());
 	}
 
 	@Test
 	public void canAddPet(){
 		Pet pet = new Pet();
-		player.addPet(pet);
-		assertEquals(pet, player.getPet());
+		character.addPet(pet);
+		assertEquals(pet, character.getPet());
 	}
 
 	@Test
 	public void hasWeapon(){
-		assertEquals(barbarian.getWeapon(), player.getWeapon());
+		assertEquals(barbarian.getWeapon(), character.getWeapon());
 	}
 
 	@Test
 	public void canAttackEnemy(){
-		player.attackEnemy(goblin);
+		character.attackEnemy(goblin);
 		assertEquals(95, goblin.getHealthPoints());
 	}
 
 	@Test
 	public void canReturnEnemyDamageTaken(){
-		assertEquals("Ouch, that hurt by exactly 5 points!", player.attackEnemy(goblin));
+		assertEquals("Ouch, that hurt by exactly 5 points!", character.attackEnemy(goblin));
 	}
 
 	@Test
 	public void canAddTitles(){
-		assertEquals("Vicky the Human Barbarian", player.getNameWithTitles());
+		assertEquals("Vicky the Human Barbarian", character.getNameWithTitles());
 	}
 }

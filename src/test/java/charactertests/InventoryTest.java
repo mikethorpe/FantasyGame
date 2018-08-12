@@ -1,6 +1,6 @@
-package playertests;
+package charactertests;
 import org.junit.Test;
-import player.Inventory;
+import character.Inventory;
 
 import static org.junit.Assert.assertEquals;
 

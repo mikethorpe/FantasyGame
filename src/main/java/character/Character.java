@@ -1,4 +1,4 @@
-package player;
+package character;
 
 import creatures.Pet;
 import enemy.Enemy;
@@ -7,7 +7,7 @@ import interfaces.IPlayerRace;
 import interfaces.IWeapon;
 import itemstests.Potion;
 
-public class Player {
+public class Character {
 
 	private IPlayerClass playerClass;
 	private IPlayerRace playerRace;
@@ -19,7 +19,7 @@ public class Player {
 	private Pet pet;
 	private Inventory inventory;
 
-	public Player(String name, IPlayerRace playerRace, IPlayerClass playerType) {
+	public Character(String name, IPlayerRace playerRace, IPlayerClass playerType) {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerRace = playerRace;
