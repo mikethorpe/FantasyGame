@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class InventoryTest {
 
@@ -38,9 +39,10 @@ public class InventoryTest {
 
 	@Test
 	public void canGetAllItems(){
-		inventory.addItem(potion);
+		boolean addedItem = inventory.addItem(potion);
 		ArrayList<IItem> items = inventory.getAllItems();
 		assertEquals(1, items.size());
+		assertTrue(addedItem);
 	}
 
 	@Test
@@ -50,5 +52,21 @@ public class InventoryTest {
 		inventory.removeItem(potion);
 		ArrayList<IItem> items = inventory.getAllItems();
 		assertFalse(items.contains(potion));
+	}
+
+
+	@Test
+	public void cannotAddMoreThan10ItemsToDefaultInventory(){
+
+		boolean addedItem = true;
+
+		// Try to add 11 items to default inventory
+		for (int i = 0; i < 11; i++){
+			addedItem = inventory.addItem(new Potion());
+		}
+
+		// Check we only have 10
+		assertEquals(10, inventory.getNumberOfItems());
+		assertFalse(addedItem);
 	}
 }
