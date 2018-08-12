@@ -120,30 +120,28 @@ public class CharacterTest {
 		character.attackEnemy(goblin);
 		character.attackEnemy(goblin);
 		assertTrue (goblin.isDead());
+		assertEquals(25, character.getExperiencePoints());
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		character.attackEnemy(goblin2);
 		assertTrue (goblin.isDead());
+		assertEquals(50, character.getExperiencePoints());
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		character.attackEnemy(goblin3);
 		assertTrue (goblin.isDead());
+		assertEquals(75, character.getExperiencePoints());
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		character.attackEnemy(goblin4);
 		assertTrue (goblin.isDead());
-		character.attackEnemy(goblin5);
-		character.attackEnemy(goblin5);
-		character.attackEnemy(goblin5);
-		character.attackEnemy(goblin5);
-		character.attackEnemy(goblin5);
-		assertTrue (goblin.isDead());
+		assertEquals(100, character.getExperiencePoints());
 		assertEquals(LevelType.LEVEL_02, character.getLevel());
 	}
 
