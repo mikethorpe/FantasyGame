@@ -1,6 +1,5 @@
 package items;
 
-import interfaces.IWeapon;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,15 +7,20 @@ import static junit.framework.TestCase.assertEquals;
 
 public class GunTest {
 
-    IWeapon weapon;
+    Gun gun;
 
     @Before
     public void before(){
-        weapon = new Gun();
+        gun = new Gun();
     }
 
     @Test
     public void canGetAttackPoints(){
-        assertEquals(6, weapon.getAttackPoints());
+        assertEquals(6, gun.getAttackPoints());
+    }
+
+    @Test
+    public void canGetName(){
+        assertEquals("Gun", gun.getName());
     }
 }
