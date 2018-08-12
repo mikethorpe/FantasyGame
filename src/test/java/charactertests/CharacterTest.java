@@ -1,5 +1,6 @@
 package charactertests;
 
+import character.LevelType;
 import creatures.Pet;
 import enemyclasses.Goblin;
 import interfaces.IItem;
@@ -23,6 +24,10 @@ public class CharacterTest {
 	Human human;
 	Barbarian barbarian;
 	Goblin goblin;
+	Goblin goblin2;
+	Goblin goblin3;
+	Goblin goblin4;
+	Goblin goblin5;
 	Potion potion;
 
 	@Before
@@ -31,6 +36,10 @@ public class CharacterTest {
 		barbarian = new Barbarian();
 		character = new Character("Vicky", human, barbarian);
 		goblin = new Goblin();
+		goblin2 = new Goblin();
+		goblin3 = new Goblin();
+		goblin4 = new Goblin();
+		goblin5 = new Goblin();
 		potion = new Potion();
 	}
 
@@ -55,6 +64,11 @@ public class CharacterTest {
 	}
 
 	@Test
+	public void canGetLevel(){
+		assertEquals(LevelType.LEVEL_01, character.getLevel());
+	}
+
+	@Test
 	public void canAddPotion() {
 		Potion potion = new Potion();
 		character.addPotion(potion);
@@ -76,12 +90,61 @@ public class CharacterTest {
 	@Test
 	public void canAttackEnemy(){
 		character.attackEnemy(goblin);
-		assertEquals(95, goblin.getHealthPoints());
+		assertEquals(80, goblin.getHealthPoints());
 	}
 
 	@Test
 	public void canReturnEnemyDamageTaken(){
-		assertEquals("Ouch, that hurt by exactly 5 points!", character.attackEnemy(goblin));
+		assertEquals("You hit the enemy and reduced its health by 20 points!", character.attackEnemy(goblin));
+	}
+
+	@Test
+	public void canKillTheEnemyAndGainPoints(){
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		assertEquals(20, goblin.getHealthPoints());
+		assertEquals("You killed the enemy!", character.attackEnemy(goblin));
+		assertEquals(0, goblin.getHealthPoints());
+		assertEquals(true, goblin.isDead());
+		assertEquals(25, character.getExperiencePoints());
+	}
+
+	@Test
+	public void canLevelUp(){
+		assertEquals(LevelType.LEVEL_01, character.getLevel());
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		character.attackEnemy(goblin);
+		assertEquals(true, goblin.isDead());
+		character.attackEnemy(goblin2);
+		character.attackEnemy(goblin2);
+		character.attackEnemy(goblin2);
+		character.attackEnemy(goblin2);
+		character.attackEnemy(goblin2);
+		assertEquals(true, goblin2.isDead());
+		character.attackEnemy(goblin3);
+		character.attackEnemy(goblin3);
+		character.attackEnemy(goblin3);
+		character.attackEnemy(goblin3);
+		character.attackEnemy(goblin3);
+		assertEquals(true, goblin3.isDead());
+		character.attackEnemy(goblin4);
+		character.attackEnemy(goblin4);
+		character.attackEnemy(goblin4);
+		character.attackEnemy(goblin4);
+		character.attackEnemy(goblin4);
+		assertEquals(true, goblin4.isDead());
+		character.attackEnemy(goblin5);
+		character.attackEnemy(goblin5);
+		character.attackEnemy(goblin5);
+		character.attackEnemy(goblin5);
+		character.attackEnemy(goblin5);
+		assertEquals(true, goblin5.isDead());
+		assertEquals(LevelType.LEVEL_02, character.getLevel());
 	}
 
 	@Test
