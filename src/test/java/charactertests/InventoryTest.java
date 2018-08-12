@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import character.Inventory;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -63,17 +62,32 @@ public class InventoryTest {
 
 
 	@Test
-	public void cannotAddMoreThan10ItemsToDefaultInventory(){
+	public void cannotAddMoreItemsThanInventorySize(){
+
+		// Create inventory with size 11
+		Inventory inventory = new Inventory(11);
 
 		boolean addedItem = true;
 
-		// Try to add 11 items to default inventory
-		for (int i = 0; i < 11; i++){
+		// Try to add 12 items to inventory
+		for (int i = 0; i < 12; i++){
 			addedItem = inventory.addItem(new Potion());
 		}
 
-		// Check we only have 10
-		assertEquals(10, inventory.getNumberOfItems());
+		// Check we only have 11 items in the inventory
+		assertEquals(11, inventory.getNumberOfItems());
 		assertFalse(addedItem);
+	}
+
+	@Test
+	public void defaultInventoryIsOfSizeTen(){
+		assertEquals(10, inventory.getInventorySize());
+	}
+
+
+	@Test
+	public void canInstatiateInventoryOfDifferentSize(){
+		Inventory inventory = new Inventory(11);
+		assertEquals(11, inventory.getInventorySize());
 	}
 }
