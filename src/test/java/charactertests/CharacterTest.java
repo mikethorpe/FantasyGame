@@ -189,12 +189,12 @@ public class CharacterTest {
 
 		// add a tenth potion and check it that it returns pickedup = true
 		// check that there are now 10 items in the inventory
-		assertEquals(true, character.pickUpItem(new Potion()));
+		assertTrue(character.pickUpItem(new Potion()));
 		assertEquals(10, character.getNumberOfInventoryItems());
 
 		// add an eleventh potion and check that it returns pickedup = false
 		// check that there are still only 10 items in the inventory
-		assertEquals(false, character.pickUpItem(new Potion()));
+		assertFalse (character.pickUpItem(new Potion()));
 		assertEquals(10, character.getNumberOfInventoryItems());
 	}
 
