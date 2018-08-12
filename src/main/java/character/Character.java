@@ -9,6 +9,7 @@ import interfaces.IWeapon;
 import itemstests.Potion;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class Character {
 
@@ -90,11 +91,20 @@ public class Character {
 		this.pet = pet;
 	}
 
+	public void updateLevel(){
+		for (LevelType level : LevelType.values()){
+			if (level.getExperienceRequired() <= this.experiencePoints){
+				this.level = level;
+			}
+		}
+	}
+
 	public String attackEnemy(Enemy enemy){
 		int attackPoints = weapon.getAttackPoints();
 		String response = enemy.takeDamage(attackPoints);
 		if (enemy.isDead() == true){
 			this.experiencePoints += enemy.getExperiencePointsToAward();
+			updateLevel();
 		}
 		return response;
 	}

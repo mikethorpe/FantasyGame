@@ -2,16 +2,16 @@ package character;
 
 public enum LevelType {
 
-    LEVEL_01(1, 100),
-    LEVEL_02(2, 200),
-    LEVEL_03(3, 300),
-    LEVEL_04(4, 400),
-    LEVEL_05(5, 500),
-    LEVEL_06(6, 600),
-    LEVEL_07(7, 700),
-    LEVEL_08(8, 800),
-    LEVEL_09(9, 900),
-    LEVEL_10(10, 1000);
+    LEVEL_01(1, 0),
+    LEVEL_02(2, 100),
+    LEVEL_03(3, 200),
+    LEVEL_04(4, 300),
+    LEVEL_05(5, 400),
+    LEVEL_06(6, 500),
+    LEVEL_07(7, 600),
+    LEVEL_08(8, 700),
+    LEVEL_09(9, 800),
+    LEVEL_10(10, 900);
 
     private final int level;
     private final int experiencePoints;
@@ -19,6 +19,10 @@ public enum LevelType {
     LevelType(int level, int experiencePoints){
         this.level = level;
         this.experiencePoints = experiencePoints;
+    }
+
+    public int getExperienceRequired(){
+        return this.experiencePoints;
     }
 
 }
