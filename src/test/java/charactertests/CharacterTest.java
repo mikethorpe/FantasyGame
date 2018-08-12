@@ -6,7 +6,7 @@ import itemstests.Potion;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
-import playerclassestests.Barbarian;
+import playerclasses.Barbarian;
 import playerraces.Human;
 
 import static junit.framework.TestCase.assertEquals;

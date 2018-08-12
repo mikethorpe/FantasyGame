@@ -3,6 +3,7 @@ package playerclassestests;
 import itemstests.Staff;
 import org.junit.Before;
 import org.junit.Test;
+import playerclasses.Warlock;
 
 import static junit.framework.TestCase.assertEquals;
 

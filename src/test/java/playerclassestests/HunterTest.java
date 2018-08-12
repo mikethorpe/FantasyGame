@@ -3,6 +3,7 @@ package playerclassestests;
 import itemstests.Gun;
 import org.junit.Before;
 import org.junit.Test;
+import playerclasses.Hunter;
 
 import static junit.framework.TestCase.assertEquals;
 
