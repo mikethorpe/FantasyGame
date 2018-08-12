@@ -2,12 +2,15 @@ package charactertests;
 
 import creatures.Pet;
 import enemyclasses.Goblin;
+import interfaces.IItem;
 import itemstests.Potion;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
 import playerclasses.Barbarian;
 import playerraces.Human;
+
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -89,4 +92,10 @@ public class CharacterTest {
 		assertEquals(1, character.getNumberOfInventoryItems());
 	}
 
+	@Test
+	public void canGetAllInventoryItems(){
+		character.pickUpItem(potion);
+		ArrayList<IItem> items = character.getAllItems();
+		assertEquals(1, items.size());
+	}
 }

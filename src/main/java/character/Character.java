@@ -8,6 +8,8 @@ import interfaces.IPlayerRace;
 import interfaces.IWeapon;
 import itemstests.Potion;
 
+import java.util.ArrayList;
+
 public class Character {
 
 	private IPlayerClass playerClass;
@@ -87,5 +89,9 @@ public class Character {
 
 	public int getNumberOfInventoryItems(){
 		return this.inventory.getNumberOfItems();
+	}
+
+	public ArrayList<IItem> getAllItems(){
+		return  inventory.getAllItems();
 	}
 }

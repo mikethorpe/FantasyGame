@@ -18,4 +18,8 @@ public class Inventory {
 	public void addItem(IItem item){
 		inventoryItems.add(item);
 	}
+
+	public ArrayList<IItem> getAllItems(){
+		return this.inventoryItems;
+	}
 }
