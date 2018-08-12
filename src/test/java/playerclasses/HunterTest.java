@@ -18,7 +18,7 @@ public class HunterTest {
 
 	@Test
 	public void canGetTitle(){
-		assertEquals("Hunter", hunter.getTitle());
+		assertEquals("Hunter", hunter.getClassTitle());
 	}
 
 	@Test

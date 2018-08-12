@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import player.Player;
 import playerclasses.Barbarian;
+import playerraces.Human;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -14,18 +15,20 @@ public class PlayerTest {
 
 
 	Player player;
+	Human human;
 	Barbarian barbarian;
 	Goblin goblin;
 
 	@Before
 	public void before() {
+		human = new Human();
 		barbarian = new Barbarian();
-		player = new Player("Vicky", barbarian);
+		player = new Player("Vicky", human, barbarian);
 		goblin = new Goblin();
 	}
 
 	@Test
-	public void canGetNameAndTitle() {
+	public void canGetName() {
 		assertEquals("Vicky", player.getName());
 	}
 
@@ -35,8 +38,13 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void canGetPlayerType() {
-		assertEquals(barbarian, player.getPlayerType());
+	public void canGetPlayerClass() {
+		assertEquals(barbarian, player.getPlayerClass());
+	}
+
+	@Test
+	public void canGetPlayerRace() {
+		assertEquals(human, player.getPlayerRace());
 	}
 
 	@Test
@@ -70,7 +78,7 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void canAddTitle(){
-		assertEquals("Vicky the Barbarian", player.getNameWithTitle());
+	public void canAddTitles(){
+		assertEquals("Vicky the Human Barbarian", player.getNameWithTitles());
 	}
 }

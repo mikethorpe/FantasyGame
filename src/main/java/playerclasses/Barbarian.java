@@ -1,22 +1,22 @@
 package playerclasses;
 
-import interfaces.IPlayerType;
+import interfaces.IPlayerClass;
 import interfaces.IWeapon;
 import items.Sword;
 
-public class Barbarian implements IPlayerType {
+public class Barbarian implements IPlayerClass {
 
-	private String title;
+	private String classTitle;
 	private IWeapon weapon;
 
 	public Barbarian(){
 		this.weapon = new Sword();
-		this.title = "Barbarian";
+		this.classTitle = "Barbarian";
 	}
 
 	@Override
-	public String getTitle(){
-		return this.title;
+	public String getClassTitle(){
+		return this.classTitle;
 	}
 
 	@Override
