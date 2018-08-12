@@ -20,7 +20,7 @@ public class BarbarianTest {
 
 	@Test
 	public void canGetTitle(){
-		assertEquals("Barbarian", barbarian.getTitle());
+		assertEquals("Barbarian", barbarian.getClassTitle());
 	}
 
 	@Test
