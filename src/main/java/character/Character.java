@@ -2,10 +2,13 @@ package character;
 
 import creatures.Pet;
 import enemy.Enemy;
+import interfaces.IItem;
 import interfaces.IPlayerClass;
 import interfaces.IPlayerRace;
 import interfaces.IWeapon;
 import itemstests.Potion;
+
+import java.util.ArrayList;
 
 public class Character {
 
@@ -86,5 +89,17 @@ public class Character {
 	public String attackEnemy(Enemy enemy){
 		int attackPoints = weapon.getAttackPoints();
 		return enemy.takeDamage(attackPoints);
+	}
+
+	public void pickUpItem(IItem item){
+		inventory.addItem(item);
+	}
+
+	public int getNumberOfInventoryItems(){
+		return this.inventory.getNumberOfItems();
+	}
+
+	public ArrayList<IItem> getAllItems(){
+		return  inventory.getAllItems();
 	}
 }

@@ -15,4 +15,11 @@ public class Inventory {
 		return this.inventoryItems.size();
 	}
 
+	public void addItem(IItem item){
+		inventoryItems.add(item);
+	}
+
+	public ArrayList<IItem> getAllItems(){
+		return this.inventoryItems;
+	}
 }

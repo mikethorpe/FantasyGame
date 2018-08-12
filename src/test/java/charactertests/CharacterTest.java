@@ -3,12 +3,15 @@ package charactertests;
 import character.LevelType;
 import creatures.Pet;
 import enemyclasses.Goblin;
+import interfaces.IItem;
 import itemstests.Potion;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
 import playerclasses.Barbarian;
 import playerraces.Human;
+
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -18,6 +21,7 @@ public class CharacterTest {
 	Human human;
 	Barbarian barbarian;
 	Goblin goblin;
+	Potion potion;
 
 	@Before
 	public void before() {
@@ -25,6 +29,7 @@ public class CharacterTest {
 		barbarian = new Barbarian();
 		character = new Character("Vicky", human, barbarian);
 		goblin = new Goblin();
+		potion = new Potion();
 	}
 
 	@Test
@@ -85,5 +90,18 @@ public class CharacterTest {
 	@Test
 	public void canAddTitles(){
 		assertEquals("Vicky the Human Barbarian", character.getNameWithTitles());
+	}
+
+	@Test
+	public void canPickUpItemAndAddToInventory(){
+		character.pickUpItem(potion);
+		assertEquals(1, character.getNumberOfInventoryItems());
+	}
+
+	@Test
+	public void canGetAllInventoryItems(){
+		character.pickUpItem(potion);
+		ArrayList<IItem> items = character.getAllItems();
+		assertEquals(1, items.size());
 	}
 }
