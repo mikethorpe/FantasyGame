@@ -13,6 +13,8 @@ import playerraces.Human;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 public class CharacterTest {
 
@@ -97,5 +99,20 @@ public class CharacterTest {
 		character.pickUpItem(potion);
 		ArrayList<IItem> items = character.getAllItems();
 		assertEquals(1, items.size());
+	}
+
+	@Test
+	public void canDropInventoryItem(){
+		character.pickUpItem(potion);
+		boolean dropped = character.dropInventoryItem(potion);
+		ArrayList<IItem> items = character.getAllItems();
+		assertFalse(items.contains(potion));
+		assertTrue(dropped);
+	}
+
+	@Test
+	public void cannotDropItem(){
+		boolean dropped = character.dropInventoryItem(potion);
+		assertFalse(dropped);
 	}
 }

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class InventoryTest {
 
@@ -47,8 +48,15 @@ public class InventoryTest {
 	public void canRemoveSpecificItem(){
 		inventory.addItem(potion);
 		inventory.addItem(sword);
-		inventory.removeItem(potion);
+		boolean removed = inventory.removeItem(potion);
 		ArrayList<IItem> items = inventory.getAllItems();
 		assertFalse(items.contains(potion));
+		assertTrue(removed);
+	}
+
+	@Test
+	public void cannotRemoveSpecificItem(){
+		boolean removed = inventory.removeItem(potion);
+		assertFalse(removed);
 	}
 }
