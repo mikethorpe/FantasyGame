@@ -6,6 +6,8 @@ import interfaces.IPlayerType;
 import interfaces.IWeapon;
 import items.Potion;
 
+import java.util.ArrayList;
+
 public class Player {
 
 	private IPlayerType playerType;
@@ -15,12 +17,14 @@ public class Player {
 	private IWeapon weapon;
 	private Potion potion;
 	private Pet pet;
+	private Inventory inventory;
 
 	public Player(String name, IPlayerType playerType) {
 		this.name = name;
 		this.healthPoints = 100;
 		this.playerType = playerType;
 		this.weapon = playerType.getWeapon();
+		this.inventory = new Inventory();
 		addTitle();
 	}
 
