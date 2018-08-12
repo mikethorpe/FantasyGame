@@ -1,7 +1,7 @@
 package playerclasses;
 
 import enemyclasses.Goblin;
-import items.Weapon;
+import items.Sword;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,18 +11,21 @@ public class BarbarianTest {
 
 	Barbarian barbarian;
 	Goblin goblin;
-	Weapon weapon;
 
 	@Before
 	public void before(){
 		barbarian = new Barbarian();
 		goblin = new Goblin();
-		weapon = new Weapon();
 	}
 
 	@Test
 	public void canGetTitle(){
 		assertEquals("Barbarian", barbarian.getTitle());
+	}
+
+	@Test
+	public void defaultWeaponIsSword(){
+		assertEquals( Sword.class, barbarian.getWeapon().getClass());
 	}
 
 }

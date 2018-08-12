@@ -1,10 +1,12 @@
 package items;
 
-public class Weapon {
+import interfaces.IWeapon;
+
+public class Sword implements IWeapon {
 
 	private int attackPoints;
 
-	public Weapon() {
+	public Sword() {
 		this.attackPoints = 5;
 	}
 

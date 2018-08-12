@@ -3,8 +3,8 @@ package player;
 import creatures.Pet;
 import enemy.Enemy;
 import interfaces.IPlayerType;
+import interfaces.IWeapon;
 import items.Potion;
-import items.Weapon;
 
 public class Player {
 
@@ -12,7 +12,7 @@ public class Player {
 	private String name;
 	private int healthPoints;
 	private String nameWithTitle;
-	private Weapon weapon;
+	private IWeapon weapon;
 	private Potion potion;
 	private Pet pet;
 
@@ -45,7 +45,7 @@ public class Player {
 		return this.nameWithTitle;
 	}
 
-	public Weapon getWeapon(){
+	public IWeapon getWeapon(){
 		return this.weapon;
 	}
 

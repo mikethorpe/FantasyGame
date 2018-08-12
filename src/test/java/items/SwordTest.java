@@ -1,16 +1,18 @@
 package items;
 
+import interfaces.IWeapon;
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class WeaponTest {
+public class SwordTest {
 
-	Weapon weapon;
+	IWeapon weapon;
+
 	@Before
 	public void before(){
-		weapon = new Weapon();
+		weapon = new Sword();
 	}
 
 	@Test

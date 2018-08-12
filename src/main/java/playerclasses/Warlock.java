@@ -2,17 +2,18 @@ package playerclasses;
 
 import creatures.Pet;
 import interfaces.IPlayerType;
-import items.Weapon;
+import interfaces.IWeapon;
+import items.Staff;
 
 public class Warlock implements IPlayerType {
 
 	private Pet pet;
 	private String title;
-	private Weapon weapon;
+	private IWeapon weapon;
 
 	public Warlock() {
 		this.title = "Warlock";
-		this.weapon = new Weapon();
+		this.weapon = new Staff();
 	}
 
 	@Override
@@ -21,7 +22,7 @@ public class Warlock implements IPlayerType {
 	}
 
 	@Override
-	public Weapon getWeapon(){
+	public IWeapon getWeapon(){
 		return this.weapon;
 	}
 
