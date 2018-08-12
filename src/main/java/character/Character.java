@@ -2,10 +2,7 @@ package character;
 
 import creatures.Pet;
 import enemy.Enemy;
-import interfaces.IItem;
-import interfaces.IPlayerClass;
-import interfaces.IPlayerRace;
-import interfaces.IWeapon;
+import interfaces.*;
 import itemstests.Potion;
 
 import java.util.ArrayList;
@@ -97,6 +94,13 @@ public class Character {
 
 	public boolean dropInventoryItem(IItem item){
 		return inventory.removeItem(item);
+	}
+
+	public void consumeHealthItemFromInventory(IHealthConsumable consumable){
+		if (inventory.checkContainsItem(consumable)) {
+			healthPoints += consumable.giveHealthPoints();
+			dropInventoryItem(consumable);
+		}
 	}
 
 }

@@ -45,6 +45,17 @@ public class InventoryTest {
 	}
 
 	@Test
+	public void canCheckItemInInventory(){
+		inventory.addItem(potion);
+		assertTrue(inventory.checkContainsItem(potion));
+	}
+
+	@Test
+	public void canCheckItemNotInInventory(){
+		assertFalse(inventory.checkContainsItem(potion));
+	}
+
+	@Test
 	public void canRemoveSpecificItem(){
 		inventory.addItem(potion);
 		inventory.addItem(sword);

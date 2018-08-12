@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface IHealthConsumable {
+public interface IHealthConsumable extends IItem {
 
 	int giveHealthPoints();
 }
