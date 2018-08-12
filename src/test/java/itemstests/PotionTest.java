@@ -19,4 +19,9 @@ public class PotionTest {
 	public void canGetName(){
 		assertEquals("Potion", potion.getName());
 	}
+
+	@Test
+	public void canGetHealthPointsFromPotion(){
+		assertEquals(10, potion.giveHealthPoints());
+	}
 }

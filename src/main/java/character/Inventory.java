@@ -33,6 +33,10 @@ public class Inventory {
 		return this.inventoryItems;
 	}
 
+	public boolean checkContainsItem(IItem item){
+		return inventoryItems.contains(item);
+	}
+
 	public boolean removeItem(IItem item){
 		return inventoryItems.remove(item);
 	}

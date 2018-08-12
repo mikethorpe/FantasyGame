@@ -132,4 +132,13 @@ public class CharacterTest {
 		assertFalse(dropped);
 	}
 
+	@Test
+	public void consumePotion(){
+		character.pickUpItem(potion);
+		character.consumeHealthItemFromInventory(potion);
+		assertEquals(110, character.getHealthPoints());
+		ArrayList<IItem> items = character.getAllItems();
+		assertFalse(items.contains(potion));
+	}
+
 }
