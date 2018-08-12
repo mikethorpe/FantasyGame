@@ -1,26 +1,26 @@
-package items;
+package itemstests;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class GunTest {
+public class StaffTest {
 
-    Gun gun;
+    Staff staff;
 
     @Before
     public void before(){
-        gun = new Gun();
+        staff = new Staff();
     }
 
     @Test
     public void canGetAttackPoints(){
-        assertEquals(6, gun.getAttackPoints());
+        assertEquals(4, staff.getAttackPoints());
     }
 
     @Test
     public void canGetName(){
-        assertEquals("Gun", gun.getName());
+        assertEquals("Staff", staff.getName());
     }
 }

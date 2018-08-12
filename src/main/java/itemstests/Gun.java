@@ -1,4 +1,4 @@
-package items;
+package itemstests;
 
 import interfaces.IItem;
 import interfaces.IWeapon;

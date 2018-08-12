@@ -5,7 +5,7 @@ import enemy.Enemy;
 import interfaces.IPlayerClass;
 import interfaces.IPlayerRace;
 import interfaces.IWeapon;
-import items.Potion;
+import itemstests.Potion;
 
 public class Player {
 

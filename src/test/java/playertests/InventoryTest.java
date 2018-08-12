@@ -4,7 +4,7 @@ import player.Inventory;
 
 import static org.junit.Assert.assertEquals;
 
-public class InventoryTests {
+public class InventoryTest {
 
 	@Test
 	public void inventoryStartsWithNoItems(){

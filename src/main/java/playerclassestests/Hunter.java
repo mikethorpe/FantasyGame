@@ -1,8 +1,8 @@
-package playerclasses;
+package playerclassestests;
 
 import interfaces.IPlayerClass;
 import interfaces.IWeapon;
-import items.Gun;
+import itemstests.Gun;
 
 public class Hunter implements IPlayerClass {
 

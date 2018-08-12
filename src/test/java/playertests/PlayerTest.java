@@ -2,11 +2,11 @@ package playertests;
 
 import creatures.Pet;
 import enemyclasses.Goblin;
-import items.Potion;
+import itemstests.Potion;
 import org.junit.Before;
 import org.junit.Test;
 import player.Player;
-import playerclasses.Barbarian;
+import playerclassestests.Barbarian;
 import playerraces.Human;
 
 import static junit.framework.TestCase.assertEquals;

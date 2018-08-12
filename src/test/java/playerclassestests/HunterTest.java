@@ -1,6 +1,6 @@
-package playerclasses;
+package playerclassestests;
 
-import items.Gun;
+import itemstests.Gun;
 import org.junit.Before;
 import org.junit.Test;
 

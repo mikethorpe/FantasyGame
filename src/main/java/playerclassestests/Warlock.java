@@ -1,17 +1,19 @@
-package playerclasses;
+package playerclassestests;
 
+import creatures.Pet;
 import interfaces.IPlayerClass;
 import interfaces.IWeapon;
-import items.Sword;
+import itemstests.Staff;
 
-public class Barbarian implements IPlayerClass {
+public class Warlock implements IPlayerClass {
 
+	private Pet pet;
 	private String classTitle;
 	private IWeapon weapon;
 
-	public Barbarian(){
-		this.weapon = new Sword();
-		this.classTitle = "Barbarian";
+	public Warlock() {
+		this.classTitle = "Warlock";
+		this.weapon = new Staff();
 	}
 
 	@Override
@@ -23,4 +25,5 @@ public class Barbarian implements IPlayerClass {
 	public IWeapon getWeapon(){
 		return this.weapon;
 	}
+
 }
