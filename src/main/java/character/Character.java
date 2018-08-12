@@ -83,8 +83,8 @@ public class Character {
 		return enemy.takeDamage(attackPoints);
 	}
 
-	public void pickUpItem(IItem item){
-		inventory.addItem(item);
+	public boolean pickUpItem(IItem item){
+		return inventory.addItem(item);
 	}
 
 	public int getNumberOfInventoryItems(){

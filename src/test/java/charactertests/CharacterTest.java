@@ -4,6 +4,7 @@ import creatures.Pet;
 import enemyclasses.Goblin;
 import interfaces.IItem;
 import itemstests.Potion;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
@@ -90,8 +91,23 @@ public class CharacterTest {
 
 	@Test
 	public void canPickUpItemAndAddToInventory(){
-		character.pickUpItem(potion);
+		boolean pickedUp = character.pickUpItem(potion);
 		assertEquals(1, character.getNumberOfInventoryItems());
+		assertTrue(pickedUp);
+	}
+
+	@Test
+	public void cannotPickUpItem(){
+		boolean pickedUp = true;
+
+		// Try to pick up 11 items to add to default inventory of size 10
+		for (int i = 0; i < 11; i++){
+			pickedUp = character.pickUpItem(new Potion());
+		}
+
+		// Check we only have 10
+		Assert.assertEquals(10, character.getNumberOfInventoryItems());
+		assertFalse(pickedUp);
 	}
 
 	@Test
@@ -115,4 +131,5 @@ public class CharacterTest {
 		boolean dropped = character.dropInventoryItem(potion);
 		assertFalse(dropped);
 	}
+
 }

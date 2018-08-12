@@ -39,9 +39,10 @@ public class InventoryTest {
 
 	@Test
 	public void canGetAllItems(){
-		inventory.addItem(potion);
+		boolean addedItem = inventory.addItem(potion);
 		ArrayList<IItem> items = inventory.getAllItems();
 		assertEquals(1, items.size());
+		assertTrue(addedItem);
 	}
 
 	@Test
@@ -58,5 +59,21 @@ public class InventoryTest {
 	public void cannotRemoveSpecificItem(){
 		boolean removed = inventory.removeItem(potion);
 		assertFalse(removed);
+	}
+
+
+	@Test
+	public void cannotAddMoreThan10ItemsToDefaultInventory(){
+
+		boolean addedItem = true;
+
+		// Try to add 11 items to default inventory
+		for (int i = 0; i < 11; i++){
+			addedItem = inventory.addItem(new Potion());
+		}
+
+		// Check we only have 10
+		assertEquals(10, inventory.getNumberOfItems());
+		assertFalse(addedItem);
 	}
 }

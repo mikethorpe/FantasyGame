@@ -15,8 +15,11 @@ public class Inventory {
 		return this.inventoryItems.size();
 	}
 
-	public void addItem(IItem item){
-		inventoryItems.add(item);
+	public boolean addItem(IItem item){
+		if (inventoryItems.size() < 10) {
+			return inventoryItems.add(item);
+		}
+		return false;
 	}
 
 	public ArrayList<IItem> getAllItems(){
