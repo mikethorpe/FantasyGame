@@ -18,6 +18,8 @@ public class Character {
 	private Potion potion;
 	private Pet pet;
 	private Inventory inventory;
+	private LevelType level;
+	private int experiencePoints;
 
 	public Character(String name, IPlayerRace playerRace, IPlayerClass playerType) {
 		this.name = name;
@@ -26,6 +28,8 @@ public class Character {
 		this.playerClass = playerType;
 		this.weapon = playerType.getWeapon();
 		this.inventory = new Inventory();
+		this.level = LevelType.LEVEL_01;
+		this.experiencePoints = 0;
 		addTitles();
 	}
 
@@ -43,6 +47,10 @@ public class Character {
 
 	public IPlayerRace getPlayerRace(){
 		return playerRace;
+	}
+
+	public LevelType getLevel() {
+		return level;
 	}
 
 	public void addTitles(){

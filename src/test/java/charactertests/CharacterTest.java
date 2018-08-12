@@ -1,5 +1,6 @@
 package charactertests;
 
+import character.LevelType;
 import creatures.Pet;
 import enemyclasses.Goblin;
 import itemstests.Potion;
@@ -44,6 +45,11 @@ public class CharacterTest {
 	@Test
 	public void canGetPlayerRace() {
 		assertEquals(human, character.getPlayerRace());
+	}
+
+	@Test
+	public void canGetLevel(){
+		assertEquals(LevelType.LEVEL_01, character.getLevel());
 	}
 
 	@Test
