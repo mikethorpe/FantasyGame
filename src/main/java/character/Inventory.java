@@ -22,4 +22,8 @@ public class Inventory {
 	public ArrayList<IItem> getAllItems(){
 		return this.inventoryItems;
 	}
+
+	public boolean removeItem(IItem item){
+		return inventoryItems.remove(item);
+	}
 }
