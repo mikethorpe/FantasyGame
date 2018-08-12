@@ -17,6 +17,7 @@ public class CharacterTest {
 	Human human;
 	Barbarian barbarian;
 	Goblin goblin;
+	Potion potion;
 
 	@Before
 	public void before() {
@@ -24,6 +25,7 @@ public class CharacterTest {
 		barbarian = new Barbarian();
 		character = new Character("Vicky", human, barbarian);
 		goblin = new Goblin();
+		potion = new Potion();
 	}
 
 	@Test
@@ -80,4 +82,11 @@ public class CharacterTest {
 	public void canAddTitles(){
 		assertEquals("Vicky the Human Barbarian", character.getNameWithTitles());
 	}
+
+	@Test
+	public void canPickUpItemAndAddToInventory(){
+		character.pickUpItem(potion);
+		assertEquals(1, character.getNumberOfInventoryItems());
+	}
+
 }
