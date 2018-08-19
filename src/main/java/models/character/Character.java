@@ -82,7 +82,7 @@ public class Character {
 		try {
 			// Rehydrates the playerRace object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.playerRace property
-			this.playerRace = (IPlayerRace) playerRaceClass.newInstance();
+			this.playerRace = (IPlayerRace) playerRaceClass.getDeclaredConstructor().newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -114,7 +114,7 @@ public class Character {
 
 			// Rehydrates the playerClass object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.playerClass property
-			this.playerClass = (IPlayerClass) playerClassClass.newInstance();
+			this.playerClass = (IPlayerClass) playerClassClass.getDeclaredConstructor().newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -176,7 +176,7 @@ public class Character {
 		try {
 			// Rehydrates the weapon object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.weapon property
-			this.weapon = (IWeapon) weaponClass.newInstance();
+			this.weapon = (IWeapon) weaponClass.getDeclaredConstructor().newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -211,7 +211,7 @@ public class Character {
 		try {
 			// Rehydrates the potion object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.potion property
-			this.potion = (Potion) potionClass.newInstance();
+			this.potion = (Potion) potionClass.getDeclaredConstructor().newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -247,7 +247,7 @@ public class Character {
 
 			// Rehydrates the pet object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.pet property
-			this.pet = (Pet) petClass.newInstance();
+			this.pet = (Pet) petClass.getDeclaredConstructor().newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
