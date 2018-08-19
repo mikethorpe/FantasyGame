@@ -20,7 +20,6 @@ public class Character {
 	private IWeapon weapon;
 	private Potion potion;
 	private Pet pet;
-	private String petClassType;
 	private Inventory inventory;
 	private LevelType level;
 	private int experiencePoints;
@@ -198,11 +197,11 @@ public class Character {
 		this.weapon = weapon;
 	}
 
-	// Rehydrates a potion object when we read the potionClass from the DB
-	// Should only be called when reading back from the DB
 	@Column(name = "potion_class")
 	private Class getPotionClass() {
 		if (potion !=null) {
+
+			// Gets the potion Class object
 			return potion.getClass();
 		}
 		return null;
@@ -211,6 +210,8 @@ public class Character {
 	private void setPotionClass(Class potionClass) {
 
 		try {
+			// Rehydrates the potion object using the Fully Qualified Class Name that was stored in the DB
+			// Assigns the rehydrated object to this.potion property
 			this.potion = (Potion) potionClass.newInstance();
 		}
 		catch (Exception e){
@@ -231,35 +232,40 @@ public class Character {
 		this.potion = potion;
 	}
 
+	@Column(name = "pet_class")
+	private Class getPetClass() {
+		if (pet!=null) {
 
-	// Rehydrates a pet object when we read the petClassType from the DB
-	// Should only be called when reading back from the DB
-	@Column(name = "petClassType")
-	private String getPetClassType() {
-		return petClassType;
+			// Gets the pet Class object
+			return pet.getClass();
+		}
+		return null;
 	}
 
-	private void setPetClassType(String petClassType) {
+	private void setPetClass(Class petClass) {
 
 		try {
-			Class petClass = Class.forName(petClassType);
+
+			// Rehydrates the pet object using the Fully Qualified Class Name that was stored in the DB
+			// Assigns the rehydrated object to this.pet property
 			this.pet = (Pet) petClass.newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
-		this.petClassType = petClassType;
 	}
 
 	@Transient
+	// the actual pet getter
+	// ignored by Hibernate, used by code
 	public Pet getPet() {
 		return pet;
 	}
 
+	// the actual pet setter
+	// ignored by Hibernate, used by code
 	public void setPet(Pet pet) {
 		this.pet = pet;
-		this.petClassType = pet.getClass().toString();
 	}
 
 
