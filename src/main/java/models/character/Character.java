@@ -13,7 +13,6 @@ public class Character {
 
 	private int id;
 	private IPlayerClass playerClass;
-	private String playerClassClassType;
 	private IPlayerRace playerRace;
 	private String playerRaceClassType;
 	private String name;
@@ -106,34 +105,36 @@ public class Character {
 		this.playerRaceClassType = playerRace.getClass().toString();
 	}
 
-	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
-	// Should only be called when reading back from the DB
-	@Column(name = "playerClassClassType")
-	private String getPlayerClassClassType() {
-		return playerClassClassType;
+	@Column(name = "player_class")
+	private Class getPlayerClassClass() {
+
+		// Gets the playerClass Fully Qualified Class Name
+		return playerClass.getClass();
 	}
 
-	private void setPlayerClassClassType(String playerClassClassType) {
-
+	private void setPlayerClassClass(Class playerClassClass) {
 		try {
-			Class playerClassClass = Class.forName(playerClassClassType);
+
+			// Rehydrates the playerClass object using the Fully Qualified Class Name
+			// Assigns the rehydrated object to this.playerClass property
 			this.playerClass = (IPlayerClass) playerClassClass.newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
-		this.playerClassClassType = playerClassClassType;
 	}
 
+	// the actual playerClass getter
+	// ignored by Hibernate, used by code
 	@Transient
 	public IPlayerClass getPlayerClass() {
 		return playerClass;
 	}
 
+	// the actual playerClass setter
+	// ignored by Hibernate, used by code
 	public void setPlayerClass(IPlayerClass playerClass) {
 		this.playerClass = playerClass;
-		this.playerClassClassType = playerClass.getClass().toString();
 	}
 
 	@Enumerated( value = EnumType.STRING)
