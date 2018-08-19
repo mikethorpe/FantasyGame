@@ -32,6 +32,7 @@ public class Character {
 		this.inventory = new Inventory();
 		this.level = LevelType.LEVEL_01;
 		this.experiencePoints = 0;
+		this.weapon = playerClass.getWeapon();
 		addTitles();
 	}
 
@@ -78,7 +79,6 @@ public class Character {
 	}
 
 	private void setPlayerRaceClass(Class playerRaceClass) {
-
 		try {
 			// Rehydrates the playerRace object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.playerRace property
@@ -173,7 +173,6 @@ public class Character {
 	}
 
 	private void setWeaponClass(Class weaponClass) {
-
 		try {
 			// Rehydrates the weapon object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.weapon property

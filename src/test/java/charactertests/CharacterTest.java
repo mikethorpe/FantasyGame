@@ -53,10 +53,10 @@ public class CharacterTest {
 		assertEquals(100, character.getHealthPoints());
 	}
 
-//	@Test
-//	public void canGetPlayerClass() {
-//		assertEquals(barbarian, character.getPlayerClass());
-//	}
+	@Test
+	public void canGetPlayerClass() {
+		assertEquals(barbarian, character.getPlayerClass());
+	}
 
 	@Test
 	public void canGetPlayerRace() {
