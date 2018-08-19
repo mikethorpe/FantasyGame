@@ -23,6 +23,7 @@ public class Character {
 	private IWeapon weapon;
 	private String weaponClassType;
 	private Potion potion;
+	private String potionClassType;
 	private Pet pet;
 	private Inventory inventory;
 	private LevelType level;
@@ -114,11 +115,11 @@ public class Character {
 	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
 	// Should only be called when reading back from the DB
 	@Column(name = "playerClassClassType")
-	public String getPlayerClassClassType() {
+	private String getPlayerClassClassType() {
 		return playerClassClassType;
 	}
 
-	public void setPlayerClassClassType(String playerClassClassType) {
+	private void setPlayerClassClassType(String playerClassClassType) {
 
 		try {
 			Class playerClassClass = Class.forName(playerClassClassType);
@@ -174,11 +175,11 @@ public class Character {
 	// Rehydrates a weapon object when we read the weaponClass from the DB
 	// Should only be called when reading back from the DB
 	@Column(name = "weaponClassType")
-	public String getWeaponClassType() {
+	private String getWeaponClassType() {
 		return weaponClassType;
 	}
 
-	public void setWeaponClassType(String weaponClassType) {
+	private void setWeaponClassType(String weaponClassType) {
 
 		try {
 			Class weaponClass = Class.forName(weaponClassType);
@@ -204,14 +205,36 @@ public class Character {
 	}
 
 
-//	@Column(name="potion")
-//	public Potion getPotion() {
-//		return potion;
-//	}
-//
-//	public void setPotion(Potion potion) {
-//		this.potion = potion;
-//	}
+
+	// Rehydrates a potion object when we read the potionClass from the DB
+	// Should only be called when reading back from the DB
+	@Column(name = "potionClassType")
+	private String getPotionClassType() {
+		return potionClassType;
+	}
+
+	private void setPotionClassType(String potionClassType) {
+
+		try {
+			Class potionClass = Class.forName(potionClassType);
+			this.potion = (Potion) potionClass.newInstance();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+
+		this.potionClassType = potionClassType;
+	}
+
+	@Transient
+	public Potion getPotion() {
+		return potion;
+	}
+
+	public void setPotion(Potion potion) {
+		this.potion = potion;
+		this.potionClassType = potion.getClass().toString();
+	}
 
 //	@Column(name="pet")
 //	public Pet getPet() {
@@ -248,7 +271,7 @@ public class Character {
 	}
 
 	public void addPotion(Potion potion){
-		this.potion = potion;
+		setPotion(potion);
 	}
 
 	public void addPet(Pet pet){
