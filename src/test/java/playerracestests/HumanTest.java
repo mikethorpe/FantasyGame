@@ -2,7 +2,7 @@ package playerracestests;
 
 import org.junit.Before;
 import org.junit.Test;
-import playerraces.Human;
+import models.playerraces.Human;
 
 import static org.junit.Assert.assertEquals;
 

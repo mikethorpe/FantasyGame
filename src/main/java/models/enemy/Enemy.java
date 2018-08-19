@@ -1,4 +1,4 @@
-package enemy;
+package models.enemy;
 
 public abstract class Enemy {
 

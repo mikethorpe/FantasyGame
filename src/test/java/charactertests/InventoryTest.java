@@ -1,10 +1,10 @@
 package charactertests;
-import interfaces.IItem;
-import itemstests.Potion;
-import itemstests.Sword;
+import models.interfaces.IItem;
+import models.items.Potion;
+import models.items.Sword;
 import org.junit.Before;
 import org.junit.Test;
-import character.Inventory;
+import models.character.Inventory;
 
 import java.util.ArrayList;
 

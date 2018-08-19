@@ -1,9 +1,9 @@
 package playerclassestests;
 
-import itemstests.Staff;
+import models.items.Staff;
 import org.junit.Before;
 import org.junit.Test;
-import playerclasses.Warlock;
+import models.playerclasses.Warlock;
 
 import static junit.framework.TestCase.assertEquals;
 

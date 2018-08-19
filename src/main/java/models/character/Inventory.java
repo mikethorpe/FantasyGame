@@ -1,6 +1,6 @@
-package character;
+package models.character;
 
-import interfaces.IItem;
+import models.interfaces.IItem;
 import java.util.ArrayList;
 
 public class Inventory {

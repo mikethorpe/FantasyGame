@@ -1,4 +1,4 @@
-package character;
+package models.character;
 
 public enum LevelType {
 

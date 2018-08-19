@@ -1,7 +1,7 @@
-package items;
+package models.items;
 
-import interfaces.IHealthConsumable;
-import interfaces.IItem;
+import models.interfaces.IHealthConsumable;
+import models.interfaces.IItem;
 
 public class Potion implements IItem, IHealthConsumable {
 

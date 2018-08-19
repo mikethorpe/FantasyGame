@@ -1,16 +1,16 @@
 package charactertests;
 
-import character.LevelType;
-import creatures.Pet;
-import enemyclasses.Goblin;
-import interfaces.IItem;
-import itemstests.Potion;
+import models.character.LevelType;
+import models.creatures.Pet;
+import models.enemyclasses.Goblin;
+import models.interfaces.IItem;
+import models.items.Potion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import character.Character;
-import playerclasses.Barbarian;
-import playerraces.Human;
+import models.character.Character;
+import models.playerclasses.Barbarian;
+import models.playerraces.Human;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,8 @@
-package playerclasses;
+package models.playerclasses;
 
-import interfaces.IPlayerClass;
-import interfaces.IWeapon;
-import items.Sword;
+import models.interfaces.IPlayerClass;
+import models.interfaces.IWeapon;
+import models.items.Sword;
 
 public class Barbarian implements IPlayerClass {
 

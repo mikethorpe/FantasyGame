@@ -1,6 +1,6 @@
-package playerraces;
+package models.playerraces;
 
-import interfaces.IPlayerRace;
+import models.interfaces.IPlayerRace;
 
 public class Dwarf implements IPlayerRace {
 

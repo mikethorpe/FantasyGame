@@ -1,6 +1,6 @@
 package enemyclassestests;
 
-import enemyclasses.Goblin;
+import models.enemyclasses.Goblin;
 import org.junit.Before;
 import org.junit.Test;
 

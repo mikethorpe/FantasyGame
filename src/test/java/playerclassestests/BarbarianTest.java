@@ -1,10 +1,10 @@
 package playerclassestests;
 
-import enemyclasses.Goblin;
-import itemstests.Sword;
+import models.enemyclasses.Goblin;
+import models.items.Sword;
 import org.junit.Before;
 import org.junit.Test;
-import playerclasses.Barbarian;
+import models.playerclasses.Barbarian;
 
 import static junit.framework.TestCase.assertEquals;
 

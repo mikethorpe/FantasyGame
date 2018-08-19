@@ -1,7 +1,7 @@
-package items;
+package models.items;
 
-import interfaces.IItem;
-import interfaces.IWeapon;
+import models.interfaces.IItem;
+import models.interfaces.IWeapon;
 
 public class Gun implements IWeapon, IItem {
 

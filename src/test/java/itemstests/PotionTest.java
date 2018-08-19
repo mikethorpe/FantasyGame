@@ -1,5 +1,6 @@
 package itemstests;
 
+import models.items.Potion;
 import org.junit.Before;
 import org.junit.Test;
 

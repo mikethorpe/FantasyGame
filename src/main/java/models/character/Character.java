@@ -1,14 +1,18 @@
-package character;
+package models.character;
 
-import creatures.Pet;
-import enemy.Enemy;
-import interfaces.*;
-import items.Potion;
+import models.creatures.Pet;
+import models.enemy.Enemy;
+import models.interfaces.*;
+import models.items.Potion;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
+@Entity
+@Table(name="characters")
 public class Character {
 
+	private int id;
 	private IPlayerClass playerClass;
 	private IPlayerRace playerRace;
 	private String name;
@@ -33,53 +37,128 @@ public class Character {
 		addTitles();
 	}
 
-	// getters
+	public Character(){
 
+	}
+
+	// getters and setters
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Column(name="health_points")
 	public int getHealthPoints() {
 		return healthPoints;
 	}
 
+	public void setHealthPoints(int healthPoints) {
+		this.healthPoints = healthPoints;
+	}
+
+	@Column(name="name")
 	public String getName() {
 		return name;
 	}
 
-	public IPlayerClass getPlayerClass(){
-		return playerClass;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public IPlayerRace getPlayerRace(){
-		return playerRace;
-	}
+//	// @dont know yet
+//	public IPlayerClass getPlayerClass(){
+//		return playerClass;
+//	}
+//
+//	public void setPlayerClass(IPlayerClass playerClass) {
+//		this.playerClass = playerClass;
+//	}
+//
+//	// @dont know yet
+//	public IPlayerRace getPlayerRace(){
+//		return playerRace;
+//	}
+//
+//	public void setPlayerRace(IPlayerRace playerRace) {
+//		this.playerRace = playerRace;
+//	}
 
+	@Enumerated( value = EnumType.STRING)
 	public LevelType getLevel() {
 		return level;
 	}
 
+	public void setLevel(LevelType level) {
+		this.level = level;
+	}
+
+	@Column(name="experience_points")
 	public int getExperiencePoints(){
 		return experiencePoints;
 	}
 
+	public void setExperiencePoints(int experiencePoints) {
+		this.experiencePoints = experiencePoints;
+	}
+
+	@Column(name="name_with_titles")
 	public String getNameWithTitles(){
 		return this.nameWithTitles;
 	}
 
-	public IWeapon getWeapon(){
-		return this.weapon;
+	public void setNameWithTitles(String nameWithTitles) {
+		this.nameWithTitles = nameWithTitles;
 	}
 
-	public Potion getPotion() {
-		return potion;
-	}
+//	// @dont know yet
+//	public IWeapon getWeapon(){
+//		return this.weapon;
+//	}
+//
+//	public void setWeapon(IWeapon weapon) {
+//		this.weapon = weapon;
+//	}
 
-	public Pet getPet() {
-		return pet;
-	}
+//	@Column(name="potion")
+//	public Potion getPotion() {
+//		return potion;
+//	}
+//
+//	public void setPotion(Potion potion) {
+//		this.potion = potion;
+//	}
 
-	public int getNumberOfInventoryItems(){
+//	@Column(name="pet")
+//	public Pet getPet() {
+//		return pet;
+//	}
+//
+//	public void setPet(Pet pet) {
+//		this.pet = pet;
+//	}
+//
+//	@Column(name="inventory")
+//	public Inventory getInventory() {
+//		return inventory;
+//	}
+//
+//	public void setInventory(Inventory inventory) {
+//		this.inventory = inventory;
+//	}
+
+	public int numberOfInventoryItems(){
 		return this.inventory.getNumberOfItems();
 	}
 
-	public ArrayList<IItem> getAllItems(){
+	public ArrayList<IItem> acquireAllItems(){
 		return  inventory.getAllItems();
 	}
 

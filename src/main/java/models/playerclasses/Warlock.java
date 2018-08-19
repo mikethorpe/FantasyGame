@@ -1,9 +1,9 @@
-package playerclasses;
+package models.playerclasses;
 
-import creatures.Pet;
-import interfaces.IPlayerClass;
-import interfaces.IWeapon;
-import items.Staff;
+import models.creatures.Pet;
+import models.interfaces.IPlayerClass;
+import models.interfaces.IWeapon;
+import models.items.Staff;
 
 public class Warlock implements IPlayerClass {
 

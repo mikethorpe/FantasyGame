@@ -1,9 +1,9 @@
 package playerclassestests;
 
-import itemstests.Gun;
+import models.items.Gun;
 import org.junit.Before;
 import org.junit.Test;
-import playerclasses.Hunter;
+import models.playerclasses.Hunter;
 
 import static junit.framework.TestCase.assertEquals;
 

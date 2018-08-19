@@ -1,4 +1,4 @@
-package creatures;
+package models.creatures;
 
 public class Pet {
 

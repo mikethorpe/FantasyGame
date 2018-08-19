@@ -1,6 +1,6 @@
-package enemyclasses;
+package models.enemyclasses;
 
-import enemy.Enemy;
+import models.enemy.Enemy;
 
 public class Goblin extends Enemy {
 

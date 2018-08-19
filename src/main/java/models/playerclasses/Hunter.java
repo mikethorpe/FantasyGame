@@ -1,8 +1,8 @@
-package playerclasses;
+package models.playerclasses;
 
-import interfaces.IPlayerClass;
-import interfaces.IWeapon;
-import items.Gun;
+import models.interfaces.IPlayerClass;
+import models.interfaces.IWeapon;
+import models.items.Gun;
 
 public class Hunter implements IPlayerClass {
 
