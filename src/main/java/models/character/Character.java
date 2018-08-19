@@ -75,31 +75,34 @@ public class Character {
 		this.name = name;
 	}
 
-	@Column(name = "playerRaceClassType")
-	private String getPlayerRaceClassType() {
-		return playerRaceClassType;
+	@Column(name = "player_race")
+	private Class getPlayerRaceClass() {
+
+		// Gets the playerRace Class object
+		return playerRace.getClass();
 	}
 
-	// Rehydrates a playerRace object when we read the playerRaceClassType from the DB
-	// Should only be called when reading back from the DB
-	private void setPlayerRaceClassType(String playerRaceClassType) {
+	private void setPlayerRaceClass(Class playerRaceClass) {
 
 		try {
-			Class playerRaceClass  = Class.forName(playerRaceClassType);
+			// Rehydrates the playerRace object using the Fully Qualified Class Name that was stored in the DB
+			// Assigns the rehydrated object to this.playerRace property
 			this.playerRace = (IPlayerRace) playerRaceClass.newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
-		this.playerRaceClassType = playerRaceClassType;
 	}
 
 	@Transient
+	// the actual playerRace getter
+	// ignored by Hibernate, used by code
 	public IPlayerRace getPlayerRace(){
 		return playerRace;
 	}
 
+	// the actual playerRace setter
+	// ignored by Hibernate, used by code
 	public void setPlayerRace(IPlayerRace playerRace) {
 		this.playerRace = playerRace;
 		this.playerRaceClassType = playerRace.getClass().toString();
@@ -108,14 +111,14 @@ public class Character {
 	@Column(name = "player_class")
 	private Class getPlayerClassClass() {
 
-		// Gets the playerClass Fully Qualified Class Name
+		// Gets the playerClass Class object
 		return playerClass.getClass();
 	}
 
 	private void setPlayerClassClass(Class playerClassClass) {
 		try {
 
-			// Rehydrates the playerClass object using the Fully Qualified Class Name
+			// Rehydrates the playerClass object using the Fully Qualified Class Name that was stored in the DB
 			// Assigns the rehydrated object to this.playerClass property
 			this.playerClass = (IPlayerClass) playerClassClass.newInstance();
 		}
@@ -124,9 +127,9 @@ public class Character {
 		}
 	}
 
+	@Transient
 	// the actual playerClass getter
 	// ignored by Hibernate, used by code
-	@Transient
 	public IPlayerClass getPlayerClass() {
 		return playerClass;
 	}
@@ -164,31 +167,35 @@ public class Character {
 		this.nameWithTitles = nameWithTitles;
 	}
 
-	// Rehydrates a weapon object when we read the weaponClass from the DB
-	// Should only be called when reading back from the DB
-	@Column(name = "weaponClassType")
-	private String getWeaponClassType() {
-		return weaponClassType;
+
+	@Column(name = "weapon_class")
+	private Class getWeaponClass() {
+
+		// Gets the weapon Class object
+		return weaponClassType.getClass();
 	}
 
-	private void setWeaponClassType(String weaponClassType) {
+	private void setWeaponClass(Class weaponClass) {
 
 		try {
-			Class weaponClass = Class.forName(weaponClassType);
+			// Rehydrates the weapon object using the Fully Qualified Class Name that was stored in the DB
+			// Assigns the rehydrated object to this.weapon property
 			this.weapon = (IWeapon) weaponClass.newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
-		this.weaponClassType = weaponClassType;
 	}
 
 	@Transient
+	// the actual weapon getter
+	// ignored by Hibernate, used by code
 	public IWeapon getWeapon(){
 		return this.weapon;
 	}
 
+	// the actual weapon setter
+	// ignored by Hibernate, used by code
 	public void setWeapon(IWeapon weapon) {
 		this.weapon = weapon;
 		this.weaponClassType = weapon.getClass().toString();
