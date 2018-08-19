@@ -33,7 +33,7 @@ public class Character {
 		this.name = name;
 		this.healthPoints = 100;
 		setPlayerRace(playerRace);
-		this.playerClass = playerClass;
+		setPlayerClass(playerClass);
 		this.weapon = playerClass.getWeapon();
 		this.inventory = new Inventory();
 		this.level = LevelType.LEVEL_01;
@@ -78,11 +78,14 @@ public class Character {
 	}
 
 
+
 	@Column(name = "playerRaceClassType")
 	private String getPlayerRaceClassType() {
 		return playerRaceClassType;
 	}
 
+	// Rehydrates a playerRace object when we read the playerRaceClassType from the DB
+	// Should only be called when reading back from the DB
 	private void setPlayerRaceClassType(String playerRaceClassType) {
 
 		try {
@@ -107,13 +110,38 @@ public class Character {
 		this.playerRaceClassType = playerRace.getClass().toString();
 	}
 
-//	public IPlayerClass getPlayerClass() {
-//		return playerClass;
-//	}
-//
-//	public void setPlayerClass(IPlayerClass playerClass) {
-//		this.playerClass = playerClass;
-//	}
+
+	private String playerClassClassType;
+
+	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
+	// Should only be called when reading back from the DB
+	@Column(name = "playerClassClassType")
+	public String getPlayerClassClassType() {
+		return playerClassClassType;
+	}
+
+	public void setPlayerClassClassType(String playerClassClassType) {
+
+		try {
+			Class playerClassClass = Class.forName(playerClassClassType);
+			this.playerClass = (IPlayerClass) playerClassClass.newInstance();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+
+		this.playerClassClassType = playerClassClassType;
+	}
+
+	@Transient
+	public IPlayerClass getPlayerClass() {
+		return playerClass;
+	}
+
+	public void setPlayerClass(IPlayerClass playerClass) {
+		this.playerClass = playerClass;
+		this.playerClassClassType = playerClass.getClass().toString();
+	}
 
 	@Enumerated( value = EnumType.STRING)
 	public LevelType getLevel() {
