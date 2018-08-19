@@ -34,6 +34,8 @@ public class Character {
 		addTitles();
 	}
 
+	// getters
+
 	public int getHealthPoints() {
 		return healthPoints;
 	}
@@ -58,12 +60,6 @@ public class Character {
 		return experiencePoints;
 	}
 
-	public void addTitles(){
-		String classTitle = playerClass.getClassTitle();
-		String raceTitle = playerRace.getRaceTitle();
-		nameWithTitles = this.name + " the " + raceTitle + " " + classTitle;
-	}
-
 	public String getNameWithTitles(){
 		return this.nameWithTitles;
 	}
@@ -76,12 +72,28 @@ public class Character {
 		return potion;
 	}
 
-	public void addPotion(Potion potion){
-		this.potion = potion;
-	}
-
 	public Pet getPet() {
 		return pet;
+	}
+
+	public int getNumberOfInventoryItems(){
+		return this.inventory.getNumberOfItems();
+	}
+
+	public ArrayList<IItem> getAllItems(){
+		return  inventory.getAllItems();
+	}
+
+	// other methods
+
+	public void addTitles(){
+		String classTitle = playerClass.getClassTitle();
+		String raceTitle = playerRace.getRaceTitle();
+		nameWithTitles = this.name + " the " + raceTitle + " " + classTitle;
+	}
+
+	public void addPotion(Potion potion){
+		this.potion = potion;
 	}
 
 	public void addPet(Pet pet){
@@ -110,14 +122,6 @@ public class Character {
 		return inventory.addItem(item);
 	}
 
-	public int getNumberOfInventoryItems(){
-		return this.inventory.getNumberOfItems();
-	}
-
-	public ArrayList<IItem> getAllItems(){
-		return  inventory.getAllItems();
-	}
-
 	public boolean dropInventoryItem(IItem item){
 		return inventory.removeItem(item);
 	}
@@ -128,5 +132,4 @@ public class Character {
 			dropInventoryItem(consumable);
 		}
 	}
-
 }
