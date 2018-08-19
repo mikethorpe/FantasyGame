@@ -1,5 +1,4 @@
 package models.character;
-
 import models.creatures.Pet;
 import models.enemy.Enemy;
 import models.interfaces.*;
@@ -25,6 +24,7 @@ public class Character {
 	private Potion potion;
 	private String potionClassType;
 	private Pet pet;
+	private String petClassType;
 	private Inventory inventory;
 	private LevelType level;
 	private int experiencePoints;
@@ -46,7 +46,6 @@ public class Character {
 	}
 
 	// getters and setters
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,8 +76,6 @@ public class Character {
 		this.name = name;
 	}
 
-
-
 	@Column(name = "playerRaceClassType")
 	private String getPlayerRaceClassType() {
 		return playerRaceClassType;
@@ -99,7 +96,6 @@ public class Character {
 		this.playerRaceClassType = playerRaceClassType;
 	}
 
-
 	@Transient
 	public IPlayerRace getPlayerRace(){
 		return playerRace;
@@ -109,8 +105,6 @@ public class Character {
 		this.playerRace = playerRace;
 		this.playerRaceClassType = playerRace.getClass().toString();
 	}
-
-
 
 	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
 	// Should only be called when reading back from the DB
@@ -169,9 +163,6 @@ public class Character {
 		this.nameWithTitles = nameWithTitles;
 	}
 
-
-
-
 	// Rehydrates a weapon object when we read the weaponClass from the DB
 	// Should only be called when reading back from the DB
 	@Column(name = "weaponClassType")
@@ -192,8 +183,6 @@ public class Character {
 		this.weaponClassType = weaponClassType;
 	}
 
-
-
 	@Transient
 	public IWeapon getWeapon(){
 		return this.weapon;
@@ -203,8 +192,6 @@ public class Character {
 		this.weapon = weapon;
 		this.weaponClassType = weapon.getClass().toString();
 	}
-
-
 
 	// Rehydrates a potion object when we read the potionClass from the DB
 	// Should only be called when reading back from the DB
@@ -236,9 +223,6 @@ public class Character {
 		this.potionClassType = potion.getClass().toString();
 	}
 
-
-
-	private String petClassType;
 
 	// Rehydrates a pet object when we read the petClassType from the DB
 	// Should only be called when reading back from the DB
