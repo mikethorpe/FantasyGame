@@ -14,14 +14,11 @@ public class Character {
 	private int id;
 	private IPlayerClass playerClass;
 	private IPlayerRace playerRace;
-	private String playerRaceClassType;
 	private String name;
 	private int healthPoints;
 	private String nameWithTitles;
 	private IWeapon weapon;
-	private String weaponClassType;
 	private Potion potion;
-	private String potionClassType;
 	private Pet pet;
 	private String petClassType;
 	private Inventory inventory;
@@ -31,9 +28,8 @@ public class Character {
 	public Character(String name, IPlayerRace playerRace, IPlayerClass playerClass) {
 		this.name = name;
 		this.healthPoints = 100;
-		setPlayerRace(playerRace);
-		setPlayerClass(playerClass);
-		setWeapon(playerClass.getWeapon());
+		this.playerRace = playerRace;
+		this.playerClass = playerClass;
 		this.inventory = new Inventory();
 		this.level = LevelType.LEVEL_01;
 		this.experiencePoints = 0;
@@ -105,7 +101,6 @@ public class Character {
 	// ignored by Hibernate, used by code
 	public void setPlayerRace(IPlayerRace playerRace) {
 		this.playerRace = playerRace;
-		this.playerRaceClassType = playerRace.getClass().toString();
 	}
 
 	@Column(name = "player_class")
@@ -172,7 +167,10 @@ public class Character {
 	private Class getWeaponClass() {
 
 		// Gets the weapon Class object
-		return weaponClassType.getClass();
+		if (weapon !=null) {
+			return weapon.getClass();
+		}
+		return null;
 	}
 
 	private void setWeaponClass(Class weaponClass) {
@@ -198,37 +196,39 @@ public class Character {
 	// ignored by Hibernate, used by code
 	public void setWeapon(IWeapon weapon) {
 		this.weapon = weapon;
-		this.weaponClassType = weapon.getClass().toString();
 	}
 
 	// Rehydrates a potion object when we read the potionClass from the DB
 	// Should only be called when reading back from the DB
-	@Column(name = "potionClassType")
-	private String getPotionClassType() {
-		return potionClassType;
+	@Column(name = "potion_class")
+	private Class getPotionClass() {
+		if (potion !=null) {
+			return potion.getClass();
+		}
+		return null;
 	}
 
-	private void setPotionClassType(String potionClassType) {
+	private void setPotionClass(Class potionClass) {
 
 		try {
-			Class potionClass = Class.forName(potionClassType);
 			this.potion = (Potion) potionClass.newInstance();
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
-		this.potionClassType = potionClassType;
 	}
 
 	@Transient
+	// the actual potion getter
+	// ignored by Hibernate, used by code
 	public Potion getPotion() {
 		return potion;
 	}
 
+	// the actual potion setter
+	// ignored by Hibernate, used by code
 	public void setPotion(Potion potion) {
 		this.potion = potion;
-		this.potionClassType = potion.getClass().toString();
 	}
 
 
