@@ -3,10 +3,9 @@ package character;
 import creatures.Pet;
 import enemy.Enemy;
 import interfaces.*;
-import itemstests.Potion;
+import items.Potion;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 public class Character {
 

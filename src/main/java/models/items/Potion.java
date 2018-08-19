@@ -1,4 +1,4 @@
-package itemstests;
+package items;
 
 import interfaces.IHealthConsumable;
 import interfaces.IItem;
