@@ -171,7 +171,7 @@ public class Character {
 
 
 
-	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
+	// Rehydrates a weapon object when we read the weaponClass from the DB
 	// Should only be called when reading back from the DB
 	@Column(name = "weaponClassType")
 	public String getWeaponClassType() {
