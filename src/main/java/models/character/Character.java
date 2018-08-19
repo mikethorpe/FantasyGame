@@ -236,14 +236,40 @@ public class Character {
 		this.potionClassType = potion.getClass().toString();
 	}
 
-//	@Column(name="pet")
-//	public Pet getPet() {
-//		return pet;
-//	}
-//
-//	public void setPet(Pet pet) {
-//		this.pet = pet;
-//	}
+
+
+	private String petClassType;
+
+	// Rehydrates a pet object when we read the petClassType from the DB
+	// Should only be called when reading back from the DB
+	@Column(name = "petClassType")
+	private String getPetClassType() {
+		return petClassType;
+	}
+
+	private void setPetClassType(String petClassType) {
+
+		try {
+			Class petClass = Class.forName(petClassType);
+			this.pet = (Pet) petClass.newInstance();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+
+		this.petClassType = petClassType;
+	}
+
+	@Transient
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+		this.petClassType = pet.getClass().toString();
+	}
+
 //
 //	@Column(name="inventory")
 //	public Inventory getInventory() {
@@ -275,7 +301,7 @@ public class Character {
 	}
 
 	public void addPet(Pet pet){
-		this.pet = pet;
+		setPet(pet);
 	}
 
 	public void updateLevel(){
