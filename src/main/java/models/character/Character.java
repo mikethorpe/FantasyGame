@@ -4,6 +4,9 @@ import models.creatures.Pet;
 import models.enemy.Enemy;
 import models.interfaces.*;
 import models.items.Potion;
+import models.playerclasses.Barbarian;
+import models.playerraces.Dwarf;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ public class Character {
 	private int id;
 	private IPlayerClass playerClass;
 	private IPlayerRace playerRace;
+	private String playerRaceClassType;
 	private String name;
 	private int healthPoints;
 	private String nameWithTitles;
@@ -28,7 +32,7 @@ public class Character {
 	public Character(String name, IPlayerRace playerRace, IPlayerClass playerClass) {
 		this.name = name;
 		this.healthPoints = 100;
-		this.playerRace = playerRace;
+		setPlayerRace(playerRace);
 		this.playerClass = playerClass;
 		this.weapon = playerClass.getWeapon();
 		this.inventory = new Inventory();
@@ -73,22 +77,42 @@ public class Character {
 		this.name = name;
 	}
 
-//	// @dont know yet
-//	public IPlayerClass getPlayerClass(){
+
+	@Column(name = "playerRaceClassType")
+	private String getPlayerRaceClassType() {
+		return playerRaceClassType;
+	}
+
+	private void setPlayerRaceClassType(String playerRaceClassType) {
+
+		try {
+			Class playerRaceClass  = Class.forName(playerRaceClassType);
+			this.playerRace = (IPlayerRace) playerRaceClass.newInstance();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+
+		this.playerRaceClassType = playerRaceClassType;
+	}
+
+
+	@Transient
+	public IPlayerRace getPlayerRace(){
+		return playerRace;
+	}
+
+	public void setPlayerRace(IPlayerRace playerRace) {
+		this.playerRace = playerRace;
+		this.playerRaceClassType = playerRace.getClass().toString();
+	}
+
+//	public IPlayerClass getPlayerClass() {
 //		return playerClass;
 //	}
 //
 //	public void setPlayerClass(IPlayerClass playerClass) {
 //		this.playerClass = playerClass;
-//	}
-//
-//	// @dont know yet
-//	public IPlayerRace getPlayerRace(){
-//		return playerRace;
-//	}
-//
-//	public void setPlayerRace(IPlayerRace playerRace) {
-//		this.playerRace = playerRace;
 //	}
 
 	@Enumerated( value = EnumType.STRING)
