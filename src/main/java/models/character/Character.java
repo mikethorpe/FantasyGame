@@ -4,9 +4,6 @@ import models.creatures.Pet;
 import models.enemy.Enemy;
 import models.interfaces.*;
 import models.items.Potion;
-import models.playerclasses.Barbarian;
-import models.playerraces.Dwarf;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,12 +14,14 @@ public class Character {
 
 	private int id;
 	private IPlayerClass playerClass;
+	private String playerClassClassType;
 	private IPlayerRace playerRace;
 	private String playerRaceClassType;
 	private String name;
 	private int healthPoints;
 	private String nameWithTitles;
 	private IWeapon weapon;
+	private String weaponClassType;
 	private Potion potion;
 	private Pet pet;
 	private Inventory inventory;
@@ -34,7 +33,7 @@ public class Character {
 		this.healthPoints = 100;
 		setPlayerRace(playerRace);
 		setPlayerClass(playerClass);
-		this.weapon = playerClass.getWeapon();
+		setWeapon(playerClass.getWeapon());
 		this.inventory = new Inventory();
 		this.level = LevelType.LEVEL_01;
 		this.experiencePoints = 0;
@@ -111,7 +110,6 @@ public class Character {
 	}
 
 
-	private String playerClassClassType;
 
 	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
 	// Should only be called when reading back from the DB
@@ -170,14 +168,41 @@ public class Character {
 		this.nameWithTitles = nameWithTitles;
 	}
 
-//	// @dont know yet
-//	public IWeapon getWeapon(){
-//		return this.weapon;
-//	}
-//
-//	public void setWeapon(IWeapon weapon) {
-//		this.weapon = weapon;
-//	}
+
+
+
+	// Rehydrates a playerClass object when we read the playerClassClassType from the DB
+	// Should only be called when reading back from the DB
+	@Column(name = "weaponClassType")
+	public String getWeaponClassType() {
+		return weaponClassType;
+	}
+
+	public void setWeaponClassType(String weaponClassType) {
+
+		try {
+			Class weaponClass = Class.forName(weaponClassType);
+			this.weapon = (IWeapon) weaponClass.newInstance();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+
+		this.weaponClassType = weaponClassType;
+	}
+
+
+
+	@Transient
+	public IWeapon getWeapon(){
+		return this.weapon;
+	}
+
+	public void setWeapon(IWeapon weapon) {
+		this.weapon = weapon;
+		this.weaponClassType = weapon.getClass().toString();
+	}
+
 
 //	@Column(name="potion")
 //	public Potion getPotion() {
