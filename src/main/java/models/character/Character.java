@@ -254,21 +254,23 @@ public class Character {
 		this.petClassType = pet.getClass().toString();
 	}
 
-//
-//	@Column(name="inventory")
-//	public Inventory getInventory() {
-//		return inventory;
-//	}
-//
-//	public void setInventory(Inventory inventory) {
-//		this.inventory = inventory;
-//	}
 
-	public int numberOfInventoryItems(){
+	@Transient
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	@Transient
+	public int getNumberOfInventoryItems(){
 		return this.inventory.getNumberOfItems();
 	}
 
-	public ArrayList<IItem> acquireAllItems(){
+	@Transient
+	public ArrayList<IItem> getAllItems(){
 		return  inventory.getAllItems();
 	}
 
